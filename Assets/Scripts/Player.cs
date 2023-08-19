@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
     #region Properties
+    [Header("MOVEMENT")]
     public Vector3 moveDirection;
     public float speed;
     public Rigidbody rb;
@@ -13,12 +15,20 @@ public class Player : MonoBehaviour
     public GameObject mesh;
     public InputManager inputManager;
 
-    [Header("ProjectileSystem")]
+    [Header("STATS")]
+    [SerializeField] private float maxHealth;
+    [SerializeField] private float currentHealth;
+
+    [Header("PROJECTILE SYSTEM")]
     public Vector3 aimDirection;
+    [SerializeField] List<Projectile> fixedProjectileList = new List<Projectile>();
     [SerializeField] List<Projectile> localProjectileList = new List<Projectile>();
     [SerializeField] List<Projectile> goneProjectileList = new List<Projectile>();
     [SerializeField] Projectile currentProjectile;
     [SerializeField] Transform projectileHolder;
+
+    [Header("FX")]
+    public FXList playerFX;
     #endregion
 
     #region Methods
@@ -44,7 +54,8 @@ public class Player : MonoBehaviour
         goneProjectileList.Add(currentProjectile);
         currentProjectile.currentPlayer = this;
         currentProjectile = null;
-        Debug.Log("shoot");
+        CinemachineShake.Instance.ShakeCamera(5, .2f);
+        Debug.Log("SHOOT");
     }
 
     public void Recall(InputAction.CallbackContext context)
@@ -58,14 +69,30 @@ public class Player : MonoBehaviour
     public void Teleport(InputAction.CallbackContext context)
     {
         if (goneProjectileList.Count == 0) return;
-        transform.position = goneProjectileList[0].transform.position;
+        transform.position = goneProjectileList[0].teleportPoint.position;
     }
 
-    public void AddProjectile(Projectile _projectile)
+    public void GetBackProjectile(Projectile _projectile)
     {
         if (localProjectileList.Contains(_projectile)) return;
         localProjectileList.Add(_projectile);
         _projectile.transform.SetParent(projectileHolder);
+        if (!fixedProjectileList.Contains(_projectile))
+            fixedProjectileList.Add(_projectile);
+    }
+
+    public void Damage(float _damage)
+    {
+        Instantiate(playerFX.bloodParticle, transform);
+        currentHealth -= _damage;
+        GPCtrl.Instance.UICtrl.healthBar.SetHealthValue(currentHealth, maxHealth);
+        if (currentHealth <= 0)
+            Death();
+    }
+
+    public void Death()
+    {
+        Debug.Log("DEATH");
     }
 
     #endregion
@@ -76,13 +103,18 @@ public class Player : MonoBehaviour
         inputManager = new InputManager();
     }
 
+    private void Start()
+    {
+        GPCtrl.Instance.UICtrl.healthBar.SetHealthValue(currentHealth, maxHealth);
+    }
+
     private void OnEnable()
     {
         inputManager.Enable();
         inputManager.Player.Shoot.started += AimInputSystem;
         inputManager.Player.Shoot.canceled += ShootInputSystem;
         inputManager.Player.Recall.performed += Recall;
-        inputManager.Player.Teleport.performed += Recall;
+        inputManager.Player.Teleport.performed += Teleport;
     }
 
     private void OnDisable()
@@ -95,11 +127,9 @@ public class Player : MonoBehaviour
         if (blockPlayerMovement) return;
         moveDirection = new Vector3(inputManager.Player.MoveDirection.ReadValue<Vector2>().x, 0, inputManager.Player.MoveDirection.ReadValue<Vector2>().y).normalized;
         aimDirection = new Vector3(inputManager.Player.AimDirection.ReadValue<Vector2>().x, 0, inputManager.Player.AimDirection.ReadValue<Vector2>().y).normalized;
-        if (aimDirection != Vector3.zero)
-        {
-            mesh.transform.forward = aimDirection;
-            if (currentProjectile != null) currentProjectile.transform.forward = mesh.transform.forward;
-        }
+        if (aimDirection != Vector3.zero) mesh.transform.forward = aimDirection;
+        if (currentProjectile != null) currentProjectile.transform.forward = mesh.transform.forward;
+
     }
 
     private void FixedUpdate()
