@@ -290,7 +290,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 525424200038f324bab9ad30cb6cdd3b, type: 2}
+  - {fileID: 2100000, guid: 956bab6c28f8d194c98eefb1fbe00258, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -451,15 +452,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4464497929771776, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 4464497929771776, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 4464497929771776, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 4464497929771776, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -603,6 +604,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 865ac9b0cfb76924082d3d9027c19727, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 865ac9b0cfb76924082d3d9027c19727, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 525424200038f324bab9ad30cb6cdd3b, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 865ac9b0cfb76924082d3d9027c19727, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: be6d155393884044bb293b5373c7e3e2, type: 2}
     - target: {fileID: 919132149155446097, guid: 865ac9b0cfb76924082d3d9027c19727, type: 3}
       propertyPath: m_Name
       value: Projectile

@@ -49,7 +49,7 @@ public class Projectile : MonoBehaviour
                 drop.SetActive(true);
                 transform.DOScale(1, .3f);
                 drop.transform.DORotate(new Vector3(0, 360, 0), 1).SetLoops(-1, LoopType.Restart);
-                drop.transform.DOMoveY(drop.transform.position.y + .5f, 1).SetLoops(-1, LoopType.Yoyo);
+                drop.transform.DOMoveY(drop.transform.position.y + .2f, 3).SetLoops(-1, LoopType.Yoyo);
                 rb.velocity = Vector3.zero;
                 break;
             case ProjectileMode.Inventory:
