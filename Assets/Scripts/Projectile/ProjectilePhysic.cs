@@ -13,6 +13,7 @@ public class ProjectilePhysic : MonoBehaviour
         if(other.GetComponent<Enemy>() != null)
         {
             Enemy _enemy = other.GetComponent<Enemy>();
+            projectile.transform.SetParent(_enemy.transform);
             _enemy.Damage(projectile.damage);
         }
     }

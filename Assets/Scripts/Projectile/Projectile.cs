@@ -11,7 +11,8 @@ public class Projectile : MonoBehaviour
         Physic = 0,
         Drop = 1,
         Inventory = 2,
-        Recall = 3
+        Recall = 3,
+        Aiming = 4
     }
 
     [SerializeField] ProjectileMode projectileMode;
@@ -34,17 +35,11 @@ public class Projectile : MonoBehaviour
 
     public void ChangeMod(ProjectileMode _projectileMode)
     {
-        Debug.Log("CHANGE MOD : " + _projectileMode);
         projectileMode = _projectileMode;
         switch(projectileMode)
         {
             case ProjectileMode.Physic:
                 rb.isKinematic = false;
-                drop.SetActive(false);
-                physic.SetActive(true);
-                transform.localScale = Vector3.zero;
-                transform.DOScale(1, .3f);
-                DOTween.Kill(drop);
                 break;
             case ProjectileMode.Drop:
                 currentSpeed = 0;
@@ -63,19 +58,25 @@ public class Projectile : MonoBehaviour
                     drop.SetActive(false);
                     physic.SetActive(false);
                     DOTween.Kill(drop);
-                    Debug.Log("to inventory");
-                    currentPlayer.GetBackProjectile(this);
+                    currentPlayer.GetProjectile(this);
                     if (currentPlayer.inputManager.Player.Shoot.IsPressed())
                     {
-                        Debug.Log("was aiming already");
                         currentPlayer.Aim();
                     }
                 });
                 rb.velocity = Vector3.zero;
                 break;
             case ProjectileMode.Recall:
+                transform.SetParent(null);
                 currentSpeed = 0;
                 rb.isKinematic = true;
+                break;
+            case ProjectileMode.Aiming:
+                drop.SetActive(false);
+                physic.SetActive(true);
+                transform.localScale = Vector3.zero;
+                transform.DOScale(1, .3f);
+                DOTween.Kill(drop);
                 break;
         }
     }

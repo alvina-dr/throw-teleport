@@ -6,4 +6,8 @@ using UnityEngine;
 public class FXList : ScriptableObject
 {
     public GameObject bloodParticle;
+    public GameObject deathParticle;
+
+    [Header("PLAYER SPECIFIC")]
+    public GameObject teleportParticle;
 }

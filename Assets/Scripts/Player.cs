@@ -15,9 +15,17 @@ public class Player : MonoBehaviour
     public GameObject mesh;
     public InputManager inputManager;
 
+    [Header("DASH")]
+    [SerializeField] private float dashSpeed;
+    [SerializeField] private float dashTime;
+    private bool isDashing = false;
+    private bool canDash = true;
+
     [Header("STATS")]
     [SerializeField] private float maxHealth;
     [SerializeField] private float currentHealth;
+    [SerializeField] private int maxExperience;
+    [SerializeField] private int currentExperience;
 
     [Header("PROJECTILE SYSTEM")]
     public Vector3 aimDirection;
@@ -42,7 +50,7 @@ public class Player : MonoBehaviour
         if (localProjectileList.Count == 0 || currentProjectile != null) return; //will have to show empty projectile list to player
         currentProjectile = localProjectileList[0];
         localProjectileList.Remove(currentProjectile);
-        currentProjectile.ChangeMod(Projectile.ProjectileMode.Physic);
+        currentProjectile.ChangeMod(Projectile.ProjectileMode.Aiming);
         currentProjectile.transform.position = projectileHolder.position;
     }
 
@@ -51,17 +59,16 @@ public class Player : MonoBehaviour
         if (currentProjectile == null) return; //will have to show empty projectile list to player
         currentProjectile.transform.SetParent(null);
         currentProjectile.currentSpeed = 2000;
+        currentProjectile.ChangeMod(Projectile.ProjectileMode.Physic);
         goneProjectileList.Add(currentProjectile);
         currentProjectile.currentPlayer = this;
         currentProjectile = null;
         CinemachineShake.Instance.ShakeCamera(5, .2f);
-        Debug.Log("SHOOT");
     }
 
     public void Recall(InputAction.CallbackContext context)
     {
         if (goneProjectileList.Count == 0) return;
-        Debug.Log("RECALL");
         goneProjectileList[0].Recall();
         goneProjectileList.Remove(goneProjectileList[0]);
     }
@@ -70,9 +77,27 @@ public class Player : MonoBehaviour
     {
         if (goneProjectileList.Count == 0) return;
         transform.position = goneProjectileList[0].teleportPoint.position;
+        goneProjectileList[0].Recall();
+        Instantiate(playerFX.teleportParticle, transform);
     }
 
-    public void GetBackProjectile(Projectile _projectile)
+    private void Dash(InputAction.CallbackContext context)
+    {
+        if (!canDash) return;
+        isDashing = true;
+        canDash = false;
+        Debug.Log("dash");
+        StartCoroutine(StopDashing());
+    }
+
+    private IEnumerator StopDashing()
+    {
+        yield return new WaitForSeconds(dashTime);
+        canDash = true;
+        isDashing = false;
+    }
+
+    public void GetProjectile(Projectile _projectile)
     {
         if (localProjectileList.Contains(_projectile)) return;
         localProjectileList.Add(_projectile);
@@ -83,9 +108,10 @@ public class Player : MonoBehaviour
 
     public void Damage(float _damage)
     {
-        Instantiate(playerFX.bloodParticle, transform);
+        Instantiate(playerFX.bloodParticle, transform).transform.position = transform.position;
+        CinemachineShake.Instance.ShakeCamera(3, .1f);
         currentHealth -= _damage;
-        GPCtrl.Instance.UICtrl.healthBar.SetHealthValue(currentHealth, maxHealth);
+        GPCtrl.Instance.UICtrl.healthBar.SetBarValue(currentHealth, maxHealth);
         if (currentHealth <= 0)
             Death();
     }
@@ -93,6 +119,25 @@ public class Player : MonoBehaviour
     public void Death()
     {
         Debug.Log("DEATH");
+    }
+
+    public void Experience(int _experience)
+    {
+        currentExperience += _experience;
+        GPCtrl.Instance.UICtrl.experienceBar.SetBarValue(currentExperience, maxExperience);
+        if (currentExperience >= maxExperience)
+        {
+            LevelUp();
+        }
+    }
+
+    public void LevelUp()
+    {
+        Debug.Log("LEVEL UP");
+        maxExperience *= 2;
+        currentExperience = 0;
+        GPCtrl.Instance.UICtrl.levelUpMenu.OpenMenu();
+        GPCtrl.Instance.UICtrl.experienceBar.SetBarValue(currentExperience, maxExperience);
     }
 
     #endregion
@@ -105,7 +150,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        GPCtrl.Instance.UICtrl.healthBar.SetHealthValue(currentHealth, maxHealth);
+        GPCtrl.Instance.UICtrl.healthBar.SetBarValue(currentHealth, maxHealth);
     }
 
     private void OnEnable()
@@ -115,6 +160,7 @@ public class Player : MonoBehaviour
         inputManager.Player.Shoot.canceled += ShootInputSystem;
         inputManager.Player.Recall.performed += Recall;
         inputManager.Player.Teleport.performed += Teleport;
+        inputManager.Player.Dash.performed += Dash;
     }
 
     private void OnDisable()
@@ -134,7 +180,14 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector3(moveDirection.x * speed, rb.velocity.y, moveDirection.z * speed);
+        if(isDashing)
+        {
+            rb.velocity = new Vector3(moveDirection.x * dashSpeed, rb.velocity.y, moveDirection.z * dashSpeed);
+        }
+        else
+        {
+            rb.velocity = new Vector3(moveDirection.x * speed, rb.velocity.y, moveDirection.z * speed);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -143,11 +196,23 @@ public class Player : MonoBehaviour
         {
             other.GetComponent<ProjectileDrop>().projectile.currentPlayer = this;
         }
+        if(other.GetComponent<Drop>() != null)
+        {
+            other.GetComponent<Drop>().currentPlayer = this;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         
+    }
+    #endregion
+
+    #region Classes
+    public class ProjectileEntry
+    {
+        public Projectile projectile;
+        public bool inInventory;
     }
     #endregion
 }

@@ -11,6 +11,7 @@ public class GPCtrl : MonoBehaviour
     #region Properties
     public Player Player;
     public UI_Ctrl UICtrl;
+    public GeneralData GeneralData;
     #endregion
 
     #region Methods

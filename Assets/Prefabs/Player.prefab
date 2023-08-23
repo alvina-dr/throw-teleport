@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2939018439049033655}
   - component: {fileID: 797306769357802874}
   - component: {fileID: 3409732582137216357}
-  - component: {fileID: 5048602100994479289}
   m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
@@ -84,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5048602100994479289
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2395534160781995783}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3037735998219328908
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2831542707633255885
 Transform:
   m_ObjectHideFlags: 0
@@ -335,13 +321,15 @@ MonoBehaviour:
   mesh: {fileID: 4562721912085205534}
   maxHealth: 0
   currentHealth: 0
+  maxExperience: 0
+  currentExperience: 0
   aimDirection: {x: 0, y: 0, z: 0}
   fixedProjectileList: []
   localProjectileList: []
   goneProjectileList: []
   currentProjectile: {fileID: 0}
   projectileHolder: {fileID: 3378117452860843823}
-  bloodParticlePrefab: {fileID: 0}
+  playerFX: {fileID: 0}
 --- !u!54 &8426529170303526283
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5039,7 +5027,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7795442206837807989}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
