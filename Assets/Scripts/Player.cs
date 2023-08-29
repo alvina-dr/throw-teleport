@@ -9,11 +9,14 @@ public class Player : MonoBehaviour
     #region Properties
     [Header("MOVEMENT")]
     public Vector3 moveDirection;
-    public float speed;
+    public float currentSpeed;
+    public float runningSpeed;
+    public float aimingSpeed;
     public Rigidbody rb;
     public bool blockPlayerMovement;
     public GameObject mesh;
     public InputManager inputManager;
+    public Animator animator;
 
     [Header("DASH")]
     [SerializeField] private float dashSpeed;
@@ -37,6 +40,9 @@ public class Player : MonoBehaviour
 
     [Header("FX")]
     public FXList playerFX;
+
+    [Header("UPGRADE")]
+    public Abilities currentAbilities;
     #endregion
 
     #region Methods
@@ -52,6 +58,7 @@ public class Player : MonoBehaviour
         localProjectileList.Remove(currentProjectile);
         currentProjectile.ChangeMod(Projectile.ProjectileMode.Aiming);
         currentProjectile.transform.position = projectileHolder.position;
+        animator.SetBool("Aiming", true);
     }
 
     public void ShootInputSystem(InputAction.CallbackContext context)
@@ -64,6 +71,7 @@ public class Player : MonoBehaviour
         currentProjectile.currentPlayer = this;
         currentProjectile = null;
         CinemachineShake.Instance.ShakeCamera(5, .2f);
+        animator.SetBool("Aiming", false);
     }
 
     public void Recall(InputAction.CallbackContext context)
@@ -75,6 +83,7 @@ public class Player : MonoBehaviour
 
     public void Teleport(InputAction.CallbackContext context)
     {
+        if (!currentAbilities.abilityTeleport) return;
         if (goneProjectileList.Count == 0) return;
         transform.position = goneProjectileList[0].teleportPoint.position;
         goneProjectileList[0].Recall();
@@ -83,6 +92,7 @@ public class Player : MonoBehaviour
 
     private void Dash(InputAction.CallbackContext context)
     {
+        if (!currentAbilities.abilityDash) return;
         if (!canDash) return;
         isDashing = true;
         canDash = false;
@@ -136,7 +146,7 @@ public class Player : MonoBehaviour
         Debug.Log("LEVEL UP");
         maxExperience *= 2;
         currentExperience = 0;
-        GPCtrl.Instance.UICtrl.levelUpMenu.OpenMenu();
+        GPCtrl.Instance.UICtrl.upgradeMenu.OpenMenu();
         GPCtrl.Instance.UICtrl.experienceBar.SetBarValue(currentExperience, maxExperience);
     }
 
@@ -150,7 +160,14 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        GPCtrl.Instance.UICtrl.healthBar.SetBarValue(currentHealth, maxHealth);
+        if(GPCtrl.Instance != null)
+        {
+            GPCtrl.Instance.UICtrl.healthBar.SetBarValue(currentHealth, maxHealth);
+        }
+        //check for save
+        //if save get save and assign to currentAbilities
+        //if no save : 
+        currentAbilities = new Abilities();
     }
 
     private void OnEnable()
@@ -173,9 +190,22 @@ public class Player : MonoBehaviour
         if (blockPlayerMovement) return;
         moveDirection = new Vector3(inputManager.Player.MoveDirection.ReadValue<Vector2>().x, 0, inputManager.Player.MoveDirection.ReadValue<Vector2>().y).normalized;
         aimDirection = new Vector3(inputManager.Player.AimDirection.ReadValue<Vector2>().x, 0, inputManager.Player.AimDirection.ReadValue<Vector2>().y).normalized;
+        if (aimDirection == Vector3.zero) aimDirection = moveDirection; //if player not looking anywhere, look where it goes
         if (aimDirection != Vector3.zero) mesh.transform.forward = aimDirection;
-        if (currentProjectile != null) currentProjectile.transform.forward = mesh.transform.forward;
+        
+        if (currentProjectile != null) //IS AIMING
+        {
+            currentSpeed = aimingSpeed;
+            currentProjectile.transform.forward = mesh.transform.forward;
+            if (moveDirection != Vector3.zero) animator.speed = 1; // moving
+            else animator.speed = 0;
+        } else
+        {
+            currentSpeed = runningSpeed;
+        }
 
+        if (moveDirection != Vector3.zero) animator.SetBool("Running", true);
+        else animator.SetBool("Running", false);
     }
 
     private void FixedUpdate()
@@ -186,7 +216,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            rb.velocity = new Vector3(moveDirection.x * speed, rb.velocity.y, moveDirection.z * speed);
+            rb.velocity = new Vector3(moveDirection.x * currentSpeed, rb.velocity.y, moveDirection.z * currentSpeed);
         }
     }
 
@@ -213,6 +243,14 @@ public class Player : MonoBehaviour
     {
         public Projectile projectile;
         public bool inInventory;
+    }
+
+    public class Abilities
+    {
+        public bool abilityTeleport = true;
+        public bool abilityDash = false;
+        public bool abilityDrag = false;
+        public bool abilityAutomaticAttack = false;
     }
     #endregion
 }
