@@ -13,4 +13,7 @@ public class EnemyData : ScriptableObject
     public float attackSpeed;
     public float attackRange;
     public float damage;
+
+    [Header("LOOT")]
+    public int material;
 }

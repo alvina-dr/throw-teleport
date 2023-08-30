@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: player-capsule-outline-material
+  m_Name: player-robot-outline-material
   m_Shader: {fileID: -6465566751694194690, guid: 86ef7adac3d746a4681e0c6098b9083a, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []

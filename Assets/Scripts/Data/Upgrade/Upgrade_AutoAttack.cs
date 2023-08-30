@@ -5,9 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/Upgrade/AutoAttack")]
 public class Upgrade_AutoAttack : UpgradeData
 {
-    public override void Upgrade(Player _player)
+    public override void Upgrade(PermanentDataHolder _PDH)
     {
-        base.Upgrade(_player);
-        _player.currentAbilities.abilityAutomaticAttack = true;
+        base.Upgrade(_PDH);
+        _PDH.currentAbilities.abilityAutomaticAttack = true;
     }
 }

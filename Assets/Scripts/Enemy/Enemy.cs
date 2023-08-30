@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
 
     [Header("FX")]
     public FXList enemyFX;
+    public BlinkColor blinkColor;
     #endregion
 
     #region Methods
@@ -55,6 +56,10 @@ public class Enemy : MonoBehaviour
         if (currentHealth <= 0)
         {
             Death();
+        }
+        else
+        {
+            blinkColor.Blink();
         }
     }
 

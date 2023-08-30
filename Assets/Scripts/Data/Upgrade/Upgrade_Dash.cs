@@ -5,9 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/Upgrade/Dash")]
 public class Upgrade_Dash : UpgradeData
 {
-    public override void Upgrade(Player _player)
+    public override void Upgrade(PermanentDataHolder _PDH)
     {
-        base.Upgrade(_player);
-        _player.currentAbilities.abilityDash = true;
+        base.Upgrade(_PDH);
+        _PDH.currentAbilities.abilityDash = true;
     }
 }

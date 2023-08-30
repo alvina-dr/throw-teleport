@@ -27,13 +27,13 @@ public class UI_UpgradeMenu : MonoBehaviour
         {
             canvasGroup.interactable = true;
             canvasGroup.blocksRaycasts = true;
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
         });
     }
 
     public void CloseMenu()
     {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         canvasGroup.DOFade(0, .3f).OnComplete(() =>
         {
             canvasGroup.interactable = false;

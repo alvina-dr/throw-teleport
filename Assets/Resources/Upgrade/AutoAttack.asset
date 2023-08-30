@@ -15,3 +15,4 @@ MonoBehaviour:
   upgradeName: Automatic attack
   upgradeDescription: '[Name] now has an automatic weapons that helps them by shooting
     down enemis that are too close.'
+  upgradeCost: 30

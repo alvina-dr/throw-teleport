@@ -25,8 +25,9 @@ public class Drop : MonoBehaviour
         }
     }
 
-    public void AddExperience(int _value)
+    public void AddMaterial(int _value)
     {
-        GPCtrl.Instance.Player.Experience(_value);
+        PermanentDataHolder.Instance.currentMaterial += _value;
+        GPCtrl.Instance.UICtrl.materialCount.SetText(PermanentDataHolder.Instance.currentMaterial);
     }
 }

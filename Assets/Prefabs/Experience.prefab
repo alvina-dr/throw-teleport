@@ -150,7 +150,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8245162106282706019}
         m_TargetAssemblyTypeName: Drop, Assembly-CSharp
-        m_MethodName: AddExperience
+        m_MethodName: AddMaterial
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

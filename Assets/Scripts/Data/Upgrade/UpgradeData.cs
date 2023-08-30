@@ -7,7 +7,7 @@ public class UpgradeData : ScriptableObject
     public string upgradeName;
     public string upgradeDescription;
     public int upgradeCost;
-    public virtual void Upgrade(Player _player)
+    public virtual void Upgrade(PermanentDataHolder _PDH)
     {
 
     }
