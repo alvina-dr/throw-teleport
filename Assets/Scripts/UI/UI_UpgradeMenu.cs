@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.EventSystems;
 
 public class UI_UpgradeMenu : MonoBehaviour
 {
@@ -16,8 +17,16 @@ public class UI_UpgradeMenu : MonoBehaviour
         for (int i = 0; i < upgradeArray.Length; i++)
         {
             UI_Button_Upgrade _button = Instantiate(buttonUpgradePrefab, upgradeGridLayout);
-            _button.SetupButton(upgradeArray[i]);
+            _button.SetupButton(upgradeArray[i], this);
             upgradeButtonList.Add(_button);
+        }
+    }
+
+    public void UpdateMenu()
+    {
+        for (int i = 0; i < upgradeButtonList.Count; i++)
+        {
+            upgradeButtonList[i].UpdateButton();
         }
     }
 
@@ -27,6 +36,7 @@ public class UI_UpgradeMenu : MonoBehaviour
         {
             canvasGroup.interactable = true;
             canvasGroup.blocksRaycasts = true;
+            EventSystem.current.SetSelectedGameObject(upgradeButtonList[0].gameObject);
             //Time.timeScale = 0;
         });
     }

@@ -10,4 +10,9 @@ public class Upgrade_AutoAttack : UpgradeData
         base.Upgrade(_PDH);
         _PDH.currentAbilities.abilityAutomaticAttack = true;
     }
+
+    public override bool CheckUpgrade(PermanentDataHolder _PDH)
+    {
+        return _PDH.currentAbilities.abilityAutomaticAttack;
+    }
 }

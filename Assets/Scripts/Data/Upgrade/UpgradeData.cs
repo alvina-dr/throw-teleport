@@ -11,4 +11,9 @@ public class UpgradeData : ScriptableObject
     {
 
     }
+
+    public virtual bool CheckUpgrade(PermanentDataHolder _PDH)
+    {
+        return false;
+    }
 }

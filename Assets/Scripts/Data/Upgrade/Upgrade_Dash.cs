@@ -10,4 +10,9 @@ public class Upgrade_Dash : UpgradeData
         base.Upgrade(_PDH);
         _PDH.currentAbilities.abilityDash = true;
     }
+
+    public override bool CheckUpgrade(PermanentDataHolder _PDH)
+    {
+        return _PDH.currentAbilities.abilityDash;
+    }
 }
