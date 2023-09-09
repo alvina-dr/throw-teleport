@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     [Header("DASH")]
     [SerializeField] private float dashSpeed;
     [SerializeField] private float dashTime;
+    [SerializeField] private float dashCooldown;
     private bool isDashing = false;
     private bool canDash = true;
 
@@ -37,8 +39,9 @@ public class Player : MonoBehaviour
     [SerializeField] Transform projectileHolder;
 
     [Header("FX")]
-    public FXList playerFX;
+    public FX_Player playerFX;
     [SerializeField] private BlinkColor blinkColor;
+    [SerializeField] private Transform smokeSource;
 
     [Header("INTERACTION SYSTEM")]
     private List<Interaction> interactionList = new List<Interaction>();
@@ -103,13 +106,16 @@ public class Player : MonoBehaviour
         isDashing = true;
         canDash = false;
         StartCoroutine(StopDashing());
+        Instantiate(playerFX.dashParticle, smokeSource).transform.position = smokeSource.transform.position;
+        animator.SetTrigger("Dashing");
     }
 
     private IEnumerator StopDashing()
     {
         yield return new WaitForSeconds(dashTime);
-        canDash = true;
         isDashing = false;
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
     }
 
     public void GetProjectile(Projectile _projectile)
@@ -123,10 +129,12 @@ public class Player : MonoBehaviour
 
     public void Damage(float _damage)
     {
-        Instantiate(playerFX.bloodParticle, transform).transform.position = transform.position;
+        if (currentHealth <= 0) return;
+            Instantiate(playerFX.damageParticle, transform).transform.position = transform.position;
         CinemachineShake.Instance.ShakeCamera(3, .1f);
         currentHealth -= _damage;
         GPCtrl.Instance.UICtrl.healthBar.SetBarValue(currentHealth, maxHealth);
+        GPCtrl.Instance.UICtrl.healthCount.SetText(currentHealth.ToString() + "/" + maxHealth.ToString());
         if (currentHealth <= 0)
             Death();
         else
@@ -136,6 +144,18 @@ public class Player : MonoBehaviour
     public void Death()
     {
         Debug.Log("DEATH");
+        blockPlayerMovement = true;
+        animator.SetTrigger("Dying");
+        DOVirtual.DelayedCall(.8f, () => {
+            PermanentDataHolder.Instance.FadeIn(() =>
+            {
+                SceneManager.LoadScene("Base");
+                PermanentDataHolder.Instance.FadeOut();
+            });
+        });
+
+        //death animation
+        //show game over text
         //game over screen, back to base
     }
     #endregion
@@ -148,10 +168,11 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        if(GPCtrl.Instance != null)
-        {
+        //if(GPCtrl.Instance.Mode == GPCtrl.GPCtrlMode.Dungeon)
+        //{
             GPCtrl.Instance.UICtrl.healthBar.SetBarValue(currentHealth, maxHealth);
-        }
+            GPCtrl.Instance.UICtrl.healthCount.SetText(currentHealth.ToString() + "/" + maxHealth.ToString());
+        //}
     }
 
     private void OnEnable()
@@ -171,7 +192,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (blockPlayerMovement) return;
+        if (blockPlayerMovement)
+        {
+            moveDirection = Vector3.zero;
+            return;
+        }
         moveDirection = new Vector3(inputManager.Player.MoveDirection.ReadValue<Vector2>().x, 0, inputManager.Player.MoveDirection.ReadValue<Vector2>().y).normalized;
         aimDirection = new Vector3(inputManager.Player.AimDirection.ReadValue<Vector2>().x, 0, inputManager.Player.AimDirection.ReadValue<Vector2>().y).normalized;
         if (currentProjectile == null) aimDirection = moveDirection; //if player not looking anywhere, look where it goes
@@ -189,6 +214,7 @@ public class Player : MonoBehaviour
         } else
         {
             currentSpeed = runningSpeed;
+            animator.speed = 1;
         }
 
         if (moveDirection != Vector3.zero) animator.SetBool("Running", true);
@@ -217,13 +243,35 @@ public class Player : MonoBehaviour
         }
         if (other.GetComponent<Interaction>() != null)
         {
-            Debug.Log("interaction add to list : " + other.GetComponent<Interaction>().name);
-            interactionList.Add(other.GetComponent<Interaction>());
+            if (!interactionList.Contains(other.GetComponent<Interaction>()))
+            {
+                Debug.Log("interaction add to list : " + other.GetComponent<Interaction>().name);
+                interactionList.Add(other.GetComponent<Interaction>());
+                GPCtrl.Instance.UICtrl.callToAction.ShowCallToAction(other.transform.position);
+                GPCtrl.Instance.UICtrl.inputIndication.ShowInputIndication();
+            }
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        
+        Interaction _interaction = other.GetComponent<Interaction>();
+        if (_interaction != null)
+        {
+            if(interactionList.Contains(_interaction))
+            {
+                if (other.GetComponent<Interaction>() == interactionList[interactionList.Count - 1] && interactionList.Count > 1)
+                {
+                    interactionList.Remove(_interaction);
+                    GPCtrl.Instance.UICtrl.callToAction.ShowCallToAction(interactionList[interactionList.Count - 1].transform.position);
+                    GPCtrl.Instance.UICtrl.inputIndication.ShowInputIndication();
+                } else
+                {
+                    interactionList.Remove(_interaction);
+                    GPCtrl.Instance.UICtrl.callToAction.HideCallToAction();
+                    GPCtrl.Instance.UICtrl.inputIndication.HideInputIndication();
+                }
+            }
+        }
     }
     #endregion
 

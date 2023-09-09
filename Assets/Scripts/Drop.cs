@@ -21,6 +21,7 @@ public class Drop : MonoBehaviour
         if (Vector3.Distance(transform.position, currentPlayer.transform.position) < 2)
         {
             OnGet?.Invoke();
+            transform.DOKill();
             Destroy(gameObject);
         }
     }
@@ -28,6 +29,6 @@ public class Drop : MonoBehaviour
     public void AddMaterial(int _value)
     {
         PermanentDataHolder.Instance.currentMaterial += _value;
-        GPCtrl.Instance.UICtrl.materialCount.SetText(PermanentDataHolder.Instance.currentMaterial);
+        GPCtrl.Instance.UICtrl.materialCount.SetText(PermanentDataHolder.Instance.currentMaterial.ToString());
     }
 }

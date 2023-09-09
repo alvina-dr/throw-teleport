@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: AutoAttack
   m_EditorClassIdentifier: 
   upgradeName: Automatic attack
+  upgradeLetter: AA
+  upgradeIcon: {fileID: 0}
   upgradeDescription: '[Name] now has an automatic weapons that helps them by shooting
     down enemis that are too close.'
   upgradeCost: 30

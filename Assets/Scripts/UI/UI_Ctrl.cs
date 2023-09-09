@@ -8,5 +8,8 @@ public class UI_Ctrl : MonoBehaviour
     public UI_ValueBar healthBar;
     public UI_UpgradeMenu upgradeMenu;
     public UI_Counter materialCount;
+    public UI_Counter healthCount;
+    public UI_CallToAction callToAction;
+    public UI_InputIndication inputIndication;
     #endregion
 }

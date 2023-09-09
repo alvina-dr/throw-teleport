@@ -59,8 +59,6 @@ MonoBehaviour:
   dashTime: 0
   maxHealth: 0
   currentHealth: 0
-  maxExperience: 0
-  currentMaterial: 0
   aimDirection: {x: 0, y: 0, z: 0}
   fixedProjectileList: []
   localProjectileList: []
@@ -69,6 +67,7 @@ MonoBehaviour:
   projectileHolder: {fileID: 3378117452860843823}
   playerFX: {fileID: 11400000, guid: e4faad73b3f6c1e42b977c5f2f865c8f, type: 2}
   blinkColor: {fileID: 1087141782397186925}
+  smokeSource: {fileID: 1968706826521991957}
 --- !u!54 &8426529170303526283
 Rigidbody:
   m_ObjectHideFlags: 0

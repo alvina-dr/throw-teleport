@@ -19,9 +19,9 @@ public class Spawner : MonoBehaviour
             {
                 EnemyData _data = enemyList[Random.Range(0, enemyList.Count - 1)];
                 Enemy _enemy = Instantiate(_data.enemyObject);
+                _enemy.transform.position = transform.position;
                 _enemy.SetEnemyStats(_data);
             }
-
         }
     }
 }

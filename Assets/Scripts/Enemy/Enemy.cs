@@ -8,14 +8,14 @@ public class Enemy : MonoBehaviour
 {
     #region Properties
     [Header("STATS")]
-    EnemyData data;
+    public EnemyData data;
     float currentHealth;
     [SerializeField] UI_ValueBar healthBar;
 
     [Header("NAVIGATION")]
     [SerializeField] AIPath aiPath;
     [SerializeField] AIDestinationSetter aiDestinationSetter;
-    Player target;
+    public Player target;
 
     [Header("ATTACK")]
     public float attackTimer;
@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     [Header("FX")]
     public FXList enemyFX;
     public BlinkColor blinkColor;
+    public Animator animator;
     #endregion
 
     #region Methods
@@ -37,7 +38,7 @@ public class Enemy : MonoBehaviour
         aiDestinationSetter.target = target.transform;
     }
 
-    private void Attack()
+    public virtual void Attack()
     {
         attackTimer += Time.deltaTime;
         if (attackTimer >= data.attackSpeed)
@@ -50,7 +51,7 @@ public class Enemy : MonoBehaviour
     public void Damage(float _damage)
     {
         if (currentHealth <= 0) return;
-        Instantiate(enemyFX.bloodParticle, transform);
+        Instantiate(enemyFX.damageParticle, transform);
         currentHealth -= _damage;
         healthBar.SetBarValue(currentHealth, data.maxHealth);
         if (currentHealth <= 0)
@@ -105,6 +106,11 @@ public class Enemy : MonoBehaviour
         {
             attackTimer = data.attackSpeed / 2;
         }
+    }
+
+    private void Start()
+    {
+        if (data != null) SetEnemyStats(data);
     }
     #endregion
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class UpgradeData : ScriptableObject
 {
     public string upgradeName;
+    public string upgradeLetter;
+    public Sprite upgradeIcon;
     public string upgradeDescription;
     public int upgradeCost;
     public virtual void Upgrade(PermanentDataHolder _PDH)

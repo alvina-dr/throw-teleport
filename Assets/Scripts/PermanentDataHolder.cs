@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using DG.Tweening;
+using System;
 
 public class PermanentDataHolder : MonoBehaviour
 {
@@ -10,15 +13,33 @@ public class PermanentDataHolder : MonoBehaviour
 
     [Header("RESSOURCES")]
     public int currentMaterial;
+
+    [Header("FADE_DARK")]
+    [SerializeField] private CanvasGroup darkBackground;
     #endregion
 
     #region Classes
     public class Abilities
     {
-        public bool abilityTeleport = true;
+        public bool abilityTeleport = false;
         public bool abilityDash = false;
         public bool abilityDrag = false;
         public bool abilityAutomaticAttack = false;
+    }
+    #endregion
+
+    #region Methods
+    public void FadeIn(Action onComplete)
+    {
+        darkBackground.DOFade(1, .3f).OnComplete(() =>
+        {
+            onComplete.Invoke();
+        });
+    }
+
+    public void FadeOut()
+    {
+        darkBackground.DOFade(0, .3f);
     }
     #endregion
 

@@ -9,6 +9,12 @@ public class GPCtrl : MonoBehaviour
     #endregion
 
     #region Properties
+    public enum GPCtrlMode
+    {
+        Dungeon = 0,
+        QG = 1
+    }
+    public GPCtrlMode Mode;
     public Player Player;
     public UI_Ctrl UICtrl;
     public GeneralData GeneralData;
@@ -25,9 +31,6 @@ public class GPCtrl : MonoBehaviour
             Destroy(this);
         else
             Instance = this;
-    }
-    private void Update()
-    {
     }
     #endregion
 }

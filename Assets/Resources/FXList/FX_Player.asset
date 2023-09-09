@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0421fd5ca195219478005cd1dc1666ab, type: 3}
+  m_Script: {fileID: 11500000, guid: af17f523e2f0055419b90373567d1ed8, type: 3}
   m_Name: FX_Player
   m_EditorClassIdentifier: 
-  bloodParticle: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
+  damageParticle: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
   deathParticle: {fileID: 0}
   teleportParticle: {fileID: 3802302459956397560, guid: b3416c8b2e3c7804b8c061dc4a36fc43, type: 3}
+  dashParticle: {fileID: 3432958286849152088, guid: 87ee7299dd44ed747af24dbb91bcd33b, type: 3}

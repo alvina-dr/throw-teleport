@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Dash
   m_EditorClassIdentifier: 
   upgradeName: Dash
+  upgradeLetter: Da
+  upgradeIcon: {fileID: 0}
   upgradeDescription: Unlocks the ability to dash.
   upgradeCost: 10

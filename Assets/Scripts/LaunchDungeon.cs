@@ -9,6 +9,10 @@ public class LaunchDungeon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene(sceneName);
+        PermanentDataHolder.Instance.FadeIn(() =>
+        {
+            SceneManager.LoadScene(sceneName);
+            PermanentDataHolder.Instance.FadeOut();
+        });
     }
 }
