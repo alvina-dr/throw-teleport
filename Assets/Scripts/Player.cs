@@ -105,6 +105,7 @@ public class Player : MonoBehaviour
         if (!canDash) return;
         isDashing = true;
         canDash = false;
+        DOTween.To(() => CinemachineShake.Instance.cinemachineVirtualCamera.m_Lens.FieldOfView, x => CinemachineShake.Instance.cinemachineVirtualCamera.m_Lens.FieldOfView = x, 24, .2f);
         StartCoroutine(StopDashing());
         Instantiate(playerFX.dashParticle, smokeSource).transform.position = smokeSource.transform.position;
         animator.SetTrigger("Dashing");
@@ -113,6 +114,7 @@ public class Player : MonoBehaviour
     private IEnumerator StopDashing()
     {
         yield return new WaitForSeconds(dashTime);
+        DOTween.To(() => CinemachineShake.Instance.cinemachineVirtualCamera.m_Lens.FieldOfView, x => CinemachineShake.Instance.cinemachineVirtualCamera.m_Lens.FieldOfView = x, 23, .2f);
         isDashing = false;
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;

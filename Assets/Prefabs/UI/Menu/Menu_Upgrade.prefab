@@ -4449,15 +4449,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9184545455013582374, guid: b6071c51b746c5e4fb838c60340815f9, type: 3}
       propertyPath: m_Colors.m_DisabledColor.b
-      value: 1
+      value: 0.5660378
       objectReference: {fileID: 0}
     - target: {fileID: 9184545455013582374, guid: b6071c51b746c5e4fb838c60340815f9, type: 3}
       propertyPath: m_Colors.m_DisabledColor.g
-      value: 1
+      value: 0.5660378
       objectReference: {fileID: 0}
     - target: {fileID: 9184545455013582374, guid: b6071c51b746c5e4fb838c60340815f9, type: 3}
       propertyPath: m_Colors.m_DisabledColor.r
-      value: 1
+      value: 0.5660378
       objectReference: {fileID: 0}
     - target: {fileID: 9184545455013582374, guid: b6071c51b746c5e4fb838c60340815f9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

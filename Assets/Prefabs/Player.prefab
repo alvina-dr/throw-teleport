@@ -57,6 +57,7 @@ MonoBehaviour:
   animator: {fileID: 738294620069605975}
   dashSpeed: 0
   dashTime: 0
+  dashCooldown: 0.6
   maxHealth: 0
   currentHealth: 0
   aimDirection: {x: 0, y: 0, z: 0}

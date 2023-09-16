@@ -28,7 +28,14 @@ public class UI_UpgradeMenu : MonoBehaviour
         {
             upgradeButtonList[i].UpdateButton();
         }
-        unlockCost.text = UnlockCost().ToString() ;
+        unlockCost.text = UnlockCost().ToString();
+        if (UnlockCost() > PermanentDataHolder.Instance.currentMaterial)
+        {
+            unlockButton.interactable = false;
+        } else
+        {
+            unlockButton.interactable = true;
+        }
     }
 
     public void UpdateAbilityInfo(UpgradeData _data)

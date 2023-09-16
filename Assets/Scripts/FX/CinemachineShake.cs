@@ -10,7 +10,7 @@ public class CinemachineShake : MonoBehaviour
     #endregion
 
     #region Properties
-    [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
+    public CinemachineVirtualCamera cinemachineVirtualCamera;
     private float shakeTimer;
     #endregion
 
