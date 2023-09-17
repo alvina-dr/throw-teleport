@@ -151,6 +151,7 @@ public class Player : MonoBehaviour
         DOVirtual.DelayedCall(.8f, () => {
             PermanentDataHolder.Instance.FadeIn(() =>
             {
+                PermanentDataHolder.Instance.currentMaterial = 0;
                 SceneManager.LoadScene("Base");
                 PermanentDataHolder.Instance.FadeOut();
             });
