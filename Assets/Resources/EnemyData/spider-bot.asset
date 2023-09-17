@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: spider-bot
   m_EditorClassIdentifier: 
   enemyObject: {fileID: 228359841364245707, guid: 67ff3713b5a5dfd458a2b5b2e26f5475, type: 3}
-  maxHealth: 50
+  maxHealth: 30
   maxSpeed: 4
   attackSpeed: 1
   attackRange: 3
   damage: 5
+  material: 0

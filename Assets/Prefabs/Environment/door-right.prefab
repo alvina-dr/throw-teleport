@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4692815432406875296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 2, y: 0.38, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -197,7 +197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bd7563a425468d408aa207f0209ccf5, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.1
+      value: 1.15
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4bd7563a425468d408aa207f0209ccf5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -243,6 +243,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4bd7563a425468d408aa207f0209ccf5, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4bd7563a425468d408aa207f0209ccf5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f6b3b32833ee0ec4daf3dfe8fab64fdc, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 4bd7563a425468d408aa207f0209ccf5, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: f702372cab49a68459c88a19a9e533d4, type: 2}
     - target: {fileID: 919132149155446097, guid: 4bd7563a425468d408aa207f0209ccf5, type: 3}
       propertyPath: m_Name
       value: right-door

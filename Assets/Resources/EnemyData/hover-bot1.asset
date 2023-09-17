@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyObject: {fileID: 1079307937039057822, guid: 5133fc34619294340915e599389d9e7a, type: 3}
   maxHealth: 50
-  maxSpeed: 4
-  attackSpeed: 1
+  maxSpeed: 3
+  attackSpeed: 2
   attackRange: 10
   damage: 10
   material: 0
