@@ -160,6 +160,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  audioSource: {fileID: 0}
 --- !u!1001 &8245162107376871603
 PrefabInstance:
   m_ObjectHideFlags: 0

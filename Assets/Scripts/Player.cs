@@ -43,6 +43,11 @@ public class Player : MonoBehaviour
     [SerializeField] private BlinkColor blinkColor;
     [SerializeField] private Transform smokeSource;
 
+    [Header("SOUND")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource walkAudioSource;
+    private int shootIterator = 0;
+
     [Header("INTERACTION SYSTEM")]
     private List<Interaction> interactionList = new List<Interaction>();
     #endregion
@@ -80,6 +85,10 @@ public class Player : MonoBehaviour
             currentProjectile = null;
             CinemachineShake.Instance.ShakeCamera(5, .2f);
             animator.SetBool("Aiming", false);
+            audioSource.clip = GPCtrl.Instance.GeneralData.soundList.shootSoundList[shootIterator];
+            shootIterator++;
+            audioSource.Play();
+            if (shootIterator >= GPCtrl.Instance.GeneralData.soundList.shootSoundList.Count) shootIterator = 0;
         }
     }
 
@@ -109,6 +118,8 @@ public class Player : MonoBehaviour
         StartCoroutine(StopDashing());
         Instantiate(playerFX.dashParticle, smokeSource).transform.position = smokeSource.transform.position;
         animator.SetTrigger("Dashing");
+        audioSource.clip = GPCtrl.Instance.GeneralData.soundList.playerDash;
+        audioSource.Play();
     }
 
     private IEnumerator StopDashing()
@@ -214,14 +225,25 @@ public class Player : MonoBehaviour
             currentProjectile.transform.forward = mesh.transform.forward;
             if (moveDirection != Vector3.zero) animator.speed = 1; // moving
             else animator.speed = 0;
+            walkAudioSource.pitch = 0.7f;
         } else
         {
             currentSpeed = runningSpeed;
             animator.speed = 1;
+            walkAudioSource.pitch = 1;
         }
 
-        if (moveDirection != Vector3.zero) animator.SetBool("Running", true);
-        else animator.SetBool("Running", false);
+        if (moveDirection != Vector3.zero)
+        {
+            animator.SetBool("Running", true);
+            walkAudioSource.clip = GPCtrl.Instance.GeneralData.soundList.footstepNormal;
+            if (!walkAudioSource.isPlaying) walkAudioSource.Play();
+        }
+        else
+        {
+            animator.SetBool("Running", false);
+            if (walkAudioSource.isPlaying) walkAudioSource.Stop();
+        }
     }
     private void FixedUpdate()
     {

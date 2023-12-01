@@ -24,6 +24,9 @@ public class Enemy : MonoBehaviour
     public FXList enemyFX;
     public BlinkColor blinkColor;
     public Animator animator;
+
+    [Header("AUDIO")]
+    [SerializeField] private AudioSource damageSource;
     #endregion
 
     #region Methods
@@ -51,6 +54,7 @@ public class Enemy : MonoBehaviour
     public void Damage(float _damage)
     {
         if (currentHealth <= 0) return;
+        damageSource.Play();
         Instantiate(enemyFX.damageParticle, transform);
         currentHealth -= _damage;
         healthBar.SetBarValue(currentHealth, data.maxHealth);
@@ -78,6 +82,7 @@ public class Enemy : MonoBehaviour
         }
         aiPath.maxSpeed = 0;
         Instantiate(enemyFX.deathParticle).transform.position = transform.position;
+        GPCtrl.Instance.AudioCtrl.PlaySound(GPCtrl.Instance.GeneralData.soundList.genericDeath);
         transform.DOScale(1.3f, .2f).OnComplete(() =>
         {
             transform.DOScale(.8f, .1f).OnComplete(() => 

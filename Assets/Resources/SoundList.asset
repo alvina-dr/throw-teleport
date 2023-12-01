@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a03d03b8035e4245bb3917c836bef72, type: 3}
+  m_Name: SoundList
+  m_EditorClassIdentifier: 
+  shootSoundList:
+  - {fileID: 8300000, guid: 8ab4184c3d6edca4182ec8856504d256, type: 3}
+  - {fileID: 8300000, guid: 8ab4184c3d6edca4182ec8856504d256, type: 3}
+  - {fileID: 8300000, guid: 5701e1359a8194a4ea6c35a7a94ad734, type: 3}
+  footstepNormal: {fileID: 8300000, guid: 711f1de9091301c4194686f59aa8ff4b, type: 3}
+  lootExperience: {fileID: 8300000, guid: 37ab17f34d08a1643aa8a832bd784063, type: 3}
+  playerDamage: {fileID: 8300000, guid: ad07083836089014285adc3fb8d622a8, type: 3}
+  playerDash: {fileID: 8300000, guid: d1b8d686a211a1a439333fedda209452, type: 3}
+  genericDeath: {fileID: 8300000, guid: d6ae97a620ec5bf47bbff8f5126dd11a, type: 3}
+  genericMusic: {fileID: 8300000, guid: 6b449c51a684f964183dd0d38fc6b78a, type: 3}

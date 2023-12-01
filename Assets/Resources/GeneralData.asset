@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: GeneralData
   m_EditorClassIdentifier: 
   lootObject: {fileID: 8245162106282706018, guid: b730d33c0725b3448b62c184feebb6c9, type: 3}
+  soundList: {fileID: 11400000, guid: 0b691c711d6387b4797e0bb29036675c, type: 2}

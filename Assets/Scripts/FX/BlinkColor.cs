@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
 
 public class BlinkColor : MonoBehaviour
 {
@@ -12,13 +10,17 @@ public class BlinkColor : MonoBehaviour
         Renderer[] children = GetComponentsInChildren<Renderer>();
         foreach (Renderer childRenderer in children)
         {
-            AddMaterial(childRenderer);
+            if(childRenderer.GetType() != typeof(ParticleSystemRenderer))
+            {
+                AddMaterial(childRenderer);
+            }
         }
         DOVirtual.DelayedCall(.1f, () =>
         {
             foreach (Renderer rend in children)
             {
-                RemoveMaterial(rend);
+                if (rend.GetType() != typeof(ParticleSystemRenderer))
+                    RemoveMaterial(rend);
             }
         });
     }

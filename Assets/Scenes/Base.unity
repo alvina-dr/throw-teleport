@@ -1248,7 +1248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f63486abaf156243b4f5d449fa7faaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Dungeon
+  sceneName: Room_1
 --- !u!1001 &140859884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6762,6 +6762,7 @@ MonoBehaviour:
   Player: {fileID: 4562721912530348859}
   UICtrl: {fileID: 1071327350}
   GeneralData: {fileID: 11400000, guid: 13540f55a203efb4d9e0d9be9223a4d7, type: 2}
+  AudioCtrl: {fileID: 0}
 --- !u!1001 &823306780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7251,7 +7252,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907038679}
-  m_LocalRotation: {x: 0.39740708, y: -0.000000015789306, z: 0.0000000068379378, w: 0.9176424}
+  m_LocalRotation: {x: 0.39740708, y: 0.000000015789306, z: -0.0000000068379378, w: 0.9176424}
   m_LocalPosition: {x: 10.6, y: 26.94, z: -30.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10897,7 +10898,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313724991}
-  m_LocalRotation: {x: 0.39740708, y: -0.000000015789306, z: 0.0000000068379378, w: 0.9176424}
+  m_LocalRotation: {x: 0.39740708, y: 0.000000015789306, z: -0.0000000068379378, w: 0.9176424}
   m_LocalPosition: {x: 10.6, y: 26.94, z: -30.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

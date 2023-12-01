@@ -16,19 +16,27 @@ public class PermanentDataHolder : MonoBehaviour
 
     [Header("FADE_DARK")]
     [SerializeField] private CanvasGroup darkBackground;
+
+    [Header("MUSIC")]
+    [SerializeField] private AudioSource musicSource;
     #endregion
 
     #region Classes
     public class Abilities
     {
         public bool abilityTeleport = false;
-        public bool abilityDash = false;
+        public bool abilityDash = true;
         public bool abilityDrag = false;
         public bool abilityAutomaticAttack = false;
     }
     #endregion
 
     #region Methods
+    public void AddMaterial(int _num)
+    {
+        currentMaterial += _num;
+    }
+
     public void FadeIn(Action onComplete)
     {
         darkBackground.DOFade(1, .3f).OnComplete(() =>

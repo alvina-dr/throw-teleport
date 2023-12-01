@@ -4251,6 +4251,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3211733333647239808}
     m_Modifications:
+    - target: {fileID: 2673522448616876710, guid: b6071c51b746c5e4fb838c60340815f9, type: 3}
+      propertyPath: uiParticle
+      value: 
+      objectReference: {fileID: 1164204207679255600}
     - target: {fileID: 9184545454305549485, guid: b6071c51b746c5e4fb838c60340815f9, type: 3}
       propertyPath: m_Sprite
       value: 

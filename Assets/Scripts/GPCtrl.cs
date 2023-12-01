@@ -18,6 +18,7 @@ public class GPCtrl : MonoBehaviour
     public Player Player;
     public UI_Ctrl UICtrl;
     public GeneralData GeneralData;
+    public AudioCtrl AudioCtrl;
     #endregion
 
     #region Methods

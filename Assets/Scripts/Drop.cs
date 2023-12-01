@@ -28,7 +28,8 @@ public class Drop : MonoBehaviour
 
     public void AddMaterial(int _value)
     {
-        PermanentDataHolder.Instance.currentMaterial += _value;
+        PermanentDataHolder.Instance.AddMaterial(_value);
         GPCtrl.Instance.UICtrl.materialCount.SetText(PermanentDataHolder.Instance.currentMaterial.ToString());
+        GPCtrl.Instance.AudioCtrl.PlaySound(GPCtrl.Instance.GeneralData.soundList.lootExperience);
     }
 }

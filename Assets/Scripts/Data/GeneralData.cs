@@ -7,4 +7,7 @@ public class GeneralData : ScriptableObject
 {
     [Header("PREFABS")]
     public GameObject lootObject;
+
+    [Header("SOUND")]
+    public SoundList soundList;
 }
