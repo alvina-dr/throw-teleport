@@ -60,6 +60,8 @@ public class Player : MonoBehaviour
 
     public void Aim()
     {
+        if (blockPlayerMovement) return;
+        if (interactionList.Count > 0) return;
         if (localProjectileList.Count == 0 || currentProjectile != null) return; //will have to show empty projectile list to player
         currentProjectile = localProjectileList[0];
         localProjectileList.Remove(currentProjectile);
@@ -70,6 +72,7 @@ public class Player : MonoBehaviour
 
     public void ShootInputSystem(InputAction.CallbackContext context)
     {
+        if (blockPlayerMovement) return;
         if (interactionList.Count > 0)
         {
             interactionList[interactionList.Count - 1].Interact();
@@ -94,6 +97,7 @@ public class Player : MonoBehaviour
 
     public void Recall(InputAction.CallbackContext context)
     {
+        if (blockPlayerMovement) return;
         if (goneProjectileList.Count == 0) return;
         goneProjectileList[0].Recall();
         goneProjectileList.Remove(goneProjectileList[0]);
@@ -101,6 +105,7 @@ public class Player : MonoBehaviour
 
     public void Teleport(InputAction.CallbackContext context)
     {
+        if (blockPlayerMovement) return;
         if (!PermanentDataHolder.Instance.currentAbilities.abilityTeleport) return;
         if (goneProjectileList.Count == 0) return;
         transform.position = goneProjectileList[0].teleportPoint.position;
@@ -110,6 +115,7 @@ public class Player : MonoBehaviour
 
     private void Dash(InputAction.CallbackContext context)
     {
+        if (blockPlayerMovement) return;
         if (!PermanentDataHolder.Instance.currentAbilities.abilityDash) return;
         if (!canDash) return;
         isDashing = true;
@@ -133,6 +139,7 @@ public class Player : MonoBehaviour
 
     public void GetProjectile(Projectile _projectile)
     {
+        Debug.Log("GET PROJECTILE");
         if (localProjectileList.Contains(_projectile)) return;
         localProjectileList.Add(_projectile);
         _projectile.transform.SetParent(projectileHolder);
@@ -182,11 +189,13 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        //if(GPCtrl.Instance.Mode == GPCtrl.GPCtrlMode.Dungeon)
-        //{
-            GPCtrl.Instance.UICtrl.healthBar.SetBarValue(currentHealth, maxHealth);
-            GPCtrl.Instance.UICtrl.healthCount.SetText(currentHealth.ToString() + "/" + maxHealth.ToString());
-        //}
+        GPCtrl.Instance.UICtrl.healthBar.SetBarValue(currentHealth, maxHealth);
+        GPCtrl.Instance.UICtrl.healthCount.SetText(currentHealth.ToString() + "/" + maxHealth.ToString());
+        if (!PermanentDataHolder.Instance.hasProjectile)
+        {
+            Destroy(currentProjectile);
+            currentProjectile = null;
+        }
     }
 
     private void OnEnable()

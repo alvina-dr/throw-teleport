@@ -169,13 +169,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 10
+  m_Height: 2
   m_Radius: 0.79
   m_SlopeLimit: 30
   m_StepOffset: 1.2
   m_SkinWidth: 0.1
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 4.88, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &228359841364245697
 MonoBehaviour:
   m_ObjectHideFlags: 0

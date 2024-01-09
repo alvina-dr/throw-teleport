@@ -184,17 +184,6 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""8321a76b-82bc-4d49-a61f-4a362694a434"",
-                    ""path"": ""<Mouse>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AimDirection"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""0663560d-e410-43a3-924c-1c1bcd77a711"",
                     ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",

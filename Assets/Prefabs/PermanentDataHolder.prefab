@@ -200,6 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4080162032100890329}
   - component: {fileID: 4080162032100890328}
+  - component: {fileID: 8740786508012801827}
   - component: {fileID: 1359034510147438519}
   m_Layer: 0
   m_Name: PermanentDataHolder
@@ -239,6 +240,18 @@ MonoBehaviour:
   currentMaterial: 0
   darkBackground: {fileID: 2543163915513765372}
   musicSource: {fileID: 1359034510147438519}
+--- !u!114 &8740786508012801827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4080162032100890331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36dda07ed2cc02f479e1bbb932d32c63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &1359034510147438519
 AudioSource:
   m_ObjectHideFlags: 0

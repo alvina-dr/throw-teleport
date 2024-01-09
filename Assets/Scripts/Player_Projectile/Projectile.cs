@@ -12,7 +12,8 @@ public class Projectile : MonoBehaviour
         Drop = 1,
         Inventory = 2,
         Recall = 3,
-        Aiming = 4
+        Aiming = 4,
+        StartInventory = 5
     }
 
     [SerializeField] ProjectileMode projectileMode;
@@ -82,6 +83,21 @@ public class Projectile : MonoBehaviour
                 transform.localScale = Vector3.zero;
                 transform.DOScale(1, .3f);
                 DOTween.Kill(drop);
+                break;
+            case ProjectileMode.StartInventory:
+                rb.isKinematic = true;
+                currentSpeed = 0;
+                projectileTrail.gameObject.SetActive(false);
+                transform.localScale = Vector3.zero;
+                transform.position = currentPlayer.transform.position;
+                drop.SetActive(false);
+                physic.SetActive(false);
+                DOTween.Kill(drop);
+                currentPlayer.GetProjectile(this);
+                //if (currentPlayer.inputManager.Player.Shoot.IsPressed())
+                //{
+                //    currentPlayer.Aim();
+                //}
                 break;
         }
     }

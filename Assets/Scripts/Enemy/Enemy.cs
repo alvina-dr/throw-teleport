@@ -104,6 +104,13 @@ public class Enemy : MonoBehaviour
     #region Unity API
     private void Update()
     {
+        if (target != null && Vector3.Distance(transform.position, target.transform.position) <= 12)
+        {
+            aiDestinationSetter.target = target.transform;
+        } else
+        {
+            aiDestinationSetter.target = null;
+        }
         if (target != null && Vector3.Distance(transform.position, target.transform.position) <= data.attackRange)
         {
             Attack();

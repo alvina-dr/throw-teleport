@@ -13,6 +13,7 @@ public class PermanentDataHolder : MonoBehaviour
 
     [Header("RESSOURCES")]
     public int currentMaterial;
+    public bool hasProjectile = false;
 
     [Header("FADE_DARK")]
     [SerializeField] private CanvasGroup darkBackground;
