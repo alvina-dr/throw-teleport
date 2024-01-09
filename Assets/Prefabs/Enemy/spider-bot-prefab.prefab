@@ -41,13 +41,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 228359841364245706}
+  - component: {fileID: 228359841364245707}
   - component: {fileID: 228359841364245701}
   - component: {fileID: 228359841364245700}
   - component: {fileID: 228359841364245703}
   - component: {fileID: 228359841364245702}
   - component: {fileID: 228359841364245697}
   - component: {fileID: 228359841364245696}
-  - component: {fileID: 228359841364245707}
   - component: {fileID: 8321140176259820996}
   m_Layer: 6
   m_Name: spider-bot-prefab
@@ -73,6 +73,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &228359841364245707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228359841364245699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b41ff7c4b3740f347a85112aec95b922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 
+  data: {fileID: 11400000, guid: 5fb4f04231e4ea743a2e51206ecad649, type: 2}
+  healthBar: {fileID: 4881538697853781300}
+  aiPath: {fileID: 228359841364245700}
+  aiDestinationSetter: {fileID: 228359841364245696}
+  target: {fileID: 0}
+  attackTimer: 0
+  enemyFX: {fileID: 11400000, guid: dd5a2d88ade604b4cac7ac8a2af285e4, type: 2}
+  blinkColor: {fileID: 5364387897190361049}
+  animator: {fileID: 0}
+  damageSource: {fileID: 8321140176259820996}
 --- !u!114 &228359841364245701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,28 +228,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
---- !u!114 &228359841364245707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 228359841364245699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b41ff7c4b3740f347a85112aec95b922, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 5fb4f04231e4ea743a2e51206ecad649, type: 2}
-  healthBar: {fileID: 4881538697853781300}
-  aiPath: {fileID: 228359841364245700}
-  aiDestinationSetter: {fileID: 228359841364245696}
-  target: {fileID: 0}
-  attackTimer: 0
-  enemyFX: {fileID: 11400000, guid: dd5a2d88ade604b4cac7ac8a2af285e4, type: 2}
-  blinkColor: {fileID: 5364387897190361049}
-  animator: {fileID: 0}
-  damageSource: {fileID: 8321140176259820996}
 --- !u!82 &8321140176259820996
 AudioSource:
   m_ObjectHideFlags: 0

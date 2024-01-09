@@ -20,6 +20,9 @@ public class PermanentDataHolder : MonoBehaviour
 
     [Header("MUSIC")]
     [SerializeField] private AudioSource musicSource;
+
+    [Header("REMEMBER")]
+    public List<string> enemyKilledID = new List<string>();
     #endregion
 
     #region Classes

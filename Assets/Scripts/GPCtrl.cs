@@ -32,6 +32,13 @@ public class GPCtrl : MonoBehaviour
             Destroy(this);
         else
             Instance = this;
+        Enemy[] enemyArray = FindObjectsOfType<Enemy>(); //DELETE ENEMIES ALREADY KILLED
+        for (int i = 0; i < enemyArray.Length; i++)
+        {
+            if (PermanentDataHolder.Instance.enemyKilledID.FindAll(x => x == enemyArray[i].id).Count > 0) {
+                Destroy(enemyArray[i].gameObject);
+            } 
+        }
     }
     #endregion
 }

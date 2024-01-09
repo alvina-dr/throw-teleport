@@ -3,10 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 
 public class Enemy : MonoBehaviour
 {
     #region Properties
+    [BoxGroup("ID")]
+    [ReadOnly]
+    public string id;
+
+    #region IDSetup
+    [BoxGroup("ID")]
+    [Button]
+    private void SetId()
+    {
+        id = System.Guid.NewGuid().ToString();
+    }
+
+    //protected void OnValidate()
+    //{
+    //    if (!gameObject.scene.IsValid())
+    //    {
+    //        id = string.Empty;
+    //        return;
+    //    }
+
+    //    if (string.IsNullOrEmpty(id) || !IsUniqueMonster(id))
+    //    {
+    //        SetId();
+    //    }
+    //}
+
+    public static bool IsUniqueMonster(string ID)
+    {
+        Enemy[] enemyArray = FindObjectsOfType<Enemy>();
+        for (int i = 0; i < enemyArray.Length; i++)
+        {
+            if (ID == enemyArray[i].id) return false;
+        }
+        return true;
+    }
+    #endregion IDSetup
+
     [Header("STATS")]
     public EnemyData data;
     float currentHealth;
@@ -95,6 +133,7 @@ public class Enemy : MonoBehaviour
                         _projectileArr[i].Recall();
                     }
                 }
+                PermanentDataHolder.Instance.enemyKilledID.Add(id);
                 Destroy(gameObject);
             });
         });

@@ -40,9 +40,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1356328161669838400}
+  - component: {fileID: 1079307937039057822}
   - component: {fileID: 5442891458017443814}
   - component: {fileID: 1547030222359111778}
-  - component: {fileID: 1079307937039057822}
   - component: {fileID: 1356328161669838402}
   - component: {fileID: 7610849276981708304}
   - component: {fileID: 3381734030761931256}
@@ -71,6 +71,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1079307937039057822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356328161669838403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5962d87ed5b2794b9bdb546fe83e0b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 
+  data: {fileID: 11400000, guid: bd7b367de498d864a9150b9c9078c658, type: 2}
+  healthBar: {fileID: 564991355926236101}
+  aiPath: {fileID: 5442891458017443814}
+  aiDestinationSetter: {fileID: 7610849276981708304}
+  target: {fileID: 0}
+  attackTimer: 2
+  enemyFX: {fileID: 11400000, guid: dd5a2d88ade604b4cac7ac8a2af285e4, type: 2}
+  blinkColor: {fileID: 1356328161669838402}
+  animator: {fileID: 1405238232838042983}
+  damageSource: {fileID: 1195783252676488145}
+  projectile: {fileID: 5366300277059073656, guid: dfecb7bf9bef93347a12e89b0ad0080e, type: 3}
+  projectileOrigin: {fileID: 1359505639145717437}
 --- !u!114 &5442891458017443814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,30 +166,6 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!114 &1079307937039057822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1356328161669838403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5962d87ed5b2794b9bdb546fe83e0b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: bd7b367de498d864a9150b9c9078c658, type: 2}
-  healthBar: {fileID: 564991355926236101}
-  aiPath: {fileID: 5442891458017443814}
-  aiDestinationSetter: {fileID: 7610849276981708304}
-  target: {fileID: 0}
-  attackTimer: 2
-  enemyFX: {fileID: 11400000, guid: dd5a2d88ade604b4cac7ac8a2af285e4, type: 2}
-  blinkColor: {fileID: 1356328161669838402}
-  animator: {fileID: 1405238232838042983}
-  damageSource: {fileID: 1195783252676488145}
-  projectile: {fileID: 5366300277059073656, guid: dfecb7bf9bef93347a12e89b0ad0080e, type: 3}
-  projectileOrigin: {fileID: 1359505639145717437}
 --- !u!114 &1356328161669838402
 MonoBehaviour:
   m_ObjectHideFlags: 0

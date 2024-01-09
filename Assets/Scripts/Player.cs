@@ -170,6 +170,7 @@ public class Player : MonoBehaviour
             PermanentDataHolder.Instance.FadeIn(() =>
             {
                 PermanentDataHolder.Instance.currentMaterial = 0;
+                PermanentDataHolder.Instance.enemyKilledID.Clear();
                 SceneManager.LoadScene("Base");
                 PermanentDataHolder.Instance.FadeOut();
             });
