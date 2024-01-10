@@ -171,6 +171,7 @@ public class Player : MonoBehaviour
             {
                 PermanentDataHolder.Instance.currentMaterial = 0;
                 PermanentDataHolder.Instance.enemyKilledID.Clear();
+                PermanentDataHolder.Instance.dropPickUpID.Clear();
                 SceneManager.LoadScene("Base");
                 PermanentDataHolder.Instance.FadeOut();
             });
@@ -190,6 +191,11 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        if(GPCtrl.Instance.roomStartPointList.Count > 0)
+        {
+            transform.position = GPCtrl.Instance.roomStartPointList.Find(x => x.name == PermanentDataHolder.Instance.formerRoom).position;
+        }
+        PermanentDataHolder.Instance.formerRoom = SceneManager.GetActiveScene().name;
         GPCtrl.Instance.UICtrl.healthBar.SetBarValue(currentHealth, maxHealth);
         GPCtrl.Instance.UICtrl.healthCount.SetText(currentHealth.ToString() + "/" + maxHealth.ToString());
         if (!PermanentDataHolder.Instance.hasProjectile)

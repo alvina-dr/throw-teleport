@@ -3,11 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 
 public class Drop : MonoBehaviour
 {
     public Player currentPlayer;
     public UnityEvent OnGet;
+    [BoxGroup("ID")]
+    [ReadOnly]
+    public string id;
+
+    #region IDSetup
+    [BoxGroup("ID")]
+    [Button]
+    private void SetId()
+    {
+        id = System.Guid.NewGuid().ToString();
+    }
+
+    public static bool IsUniqueMonster(string ID)
+    {
+        Enemy[] enemyArray = FindObjectsOfType<Enemy>();
+        for (int i = 0; i < enemyArray.Length; i++)
+        {
+            if (ID == enemyArray[i].id) return false;
+        }
+        return true;
+    }
+    #endregion IDSetup
 
     private void Start()
     {
@@ -22,6 +45,7 @@ public class Drop : MonoBehaviour
         {
             OnGet?.Invoke();
             transform.DOKill();
+            PermanentDataHolder.Instance.dropPickUpID.Add(id);
             Destroy(gameObject);
         }
     }

@@ -20,20 +20,6 @@ public class Enemy : MonoBehaviour
         id = System.Guid.NewGuid().ToString();
     }
 
-    //protected void OnValidate()
-    //{
-    //    if (!gameObject.scene.IsValid())
-    //    {
-    //        id = string.Empty;
-    //        return;
-    //    }
-
-    //    if (string.IsNullOrEmpty(id) || !IsUniqueMonster(id))
-    //    {
-    //        SetId();
-    //    }
-    //}
-
     public static bool IsUniqueMonster(string ID)
     {
         Enemy[] enemyArray = FindObjectsOfType<Enemy>();

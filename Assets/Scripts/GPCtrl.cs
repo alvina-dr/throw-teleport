@@ -19,6 +19,7 @@ public class GPCtrl : MonoBehaviour
     public UI_Ctrl UICtrl;
     public GeneralData GeneralData;
     public AudioCtrl AudioCtrl;
+    public List<Transform> roomStartPointList = new List<Transform>();
     #endregion
 
     #region Methods
@@ -38,6 +39,15 @@ public class GPCtrl : MonoBehaviour
             if (PermanentDataHolder.Instance.enemyKilledID.FindAll(x => x == enemyArray[i].id).Count > 0) {
                 Destroy(enemyArray[i].gameObject);
             } 
+        }
+
+        Drop[] dropArray = FindObjectsOfType<Drop>(); //DELETE ENEMIES ALREADY KILLED
+        for (int i = 0; i < dropArray.Length; i++)
+        {
+            if (PermanentDataHolder.Instance.dropPickUpID.FindAll(x => x == dropArray[i].id).Count > 0)
+            {
+                Destroy(dropArray[i].gameObject);
+            }
         }
     }
     #endregion

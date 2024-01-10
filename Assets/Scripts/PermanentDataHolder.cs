@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
 using System;
+using UnityEngine.SceneManagement;
 
 public class PermanentDataHolder : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class PermanentDataHolder : MonoBehaviour
 
     [Header("REMEMBER")]
     public List<string> enemyKilledID = new List<string>();
+    public List<string> dropPickUpID = new List<string>();
+    public string formerRoom;
     #endregion
 
     #region Classes
@@ -71,6 +74,7 @@ public class PermanentDataHolder : MonoBehaviour
         }
         //check if in save
         if (currentAbilities == null) currentAbilities = new Abilities();
+        formerRoom = SceneManager.GetActiveScene().name;
     }
     #endregion
 }

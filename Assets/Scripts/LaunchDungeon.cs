@@ -31,6 +31,7 @@ public class LaunchDungeon : MonoBehaviour
         PermanentDataHolder.Instance.FadeIn(() =>
         {
             SceneManager.LoadScene(sceneName);
+            //PermanentDataHolder.Instance.formerRoom = sceneName;
             PermanentDataHolder.Instance.FadeOut();
         });
     }
