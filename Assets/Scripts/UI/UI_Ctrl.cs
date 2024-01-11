@@ -11,5 +11,6 @@ public class UI_Ctrl : MonoBehaviour
     public UI_Counter healthCount;
     public UI_CallToAction callToAction;
     public UI_InputIndication inputIndication;
+    public UI_DialogBox dialogBox;
     #endregion
 }
