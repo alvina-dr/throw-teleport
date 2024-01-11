@@ -73,26 +73,20 @@ public class Player : MonoBehaviour
     public void ShootInputSystem(InputAction.CallbackContext context)
     {
         if (blockPlayerMovement) return;
-        if (interactionList.Count > 0)
-        {
-            interactionList[interactionList.Count - 1].Interact();
-        }
-        else
-        {
-            if (currentProjectile == null) return; //will have to show empty projectile list to player
-            currentProjectile.transform.SetParent(null);
-            currentProjectile.currentSpeed = 2000;
-            currentProjectile.ChangeMod(Projectile.ProjectileMode.Physic);
-            goneProjectileList.Add(currentProjectile);
-            currentProjectile.currentPlayer = this;
-            currentProjectile = null;
-            CinemachineShake.Instance.ShakeCamera(5, .2f);
-            animator.SetBool("Aiming", false);
-            audioSource.clip = GPCtrl.Instance.GeneralData.soundList.shootSoundList[shootIterator];
-            shootIterator++;
-            audioSource.Play();
-            if (shootIterator >= GPCtrl.Instance.GeneralData.soundList.shootSoundList.Count) shootIterator = 0;
-        }
+        if (currentProjectile == null) return; //will have to show empty projectile list to player
+        currentProjectile.transform.SetParent(null);
+        currentProjectile.currentSpeed = 2000;
+        currentProjectile.ChangeMod(Projectile.ProjectileMode.Physic);
+        goneProjectileList.Add(currentProjectile);
+        currentProjectile.currentPlayer = this;
+        currentProjectile = null;
+        CinemachineShake.Instance.ShakeCamera(5, .2f);
+        animator.SetBool("Aiming", false);
+        audioSource.clip = GPCtrl.Instance.GeneralData.soundList.shootSoundList[shootIterator];
+        shootIterator++;
+        audioSource.Play();
+        if (shootIterator >= GPCtrl.Instance.GeneralData.soundList.shootSoundList.Count) shootIterator = 0;
+        
     }
 
     public void Recall(InputAction.CallbackContext context)
@@ -111,6 +105,14 @@ public class Player : MonoBehaviour
         transform.position = goneProjectileList[0].teleportPoint.position;
         goneProjectileList[0].Recall();
         Instantiate(playerFX.teleportParticle, transform);
+    }
+
+    private void Confirm(InputAction.CallbackContext context)
+    {
+        if (interactionList.Count > 0)
+        {
+            interactionList[interactionList.Count - 1].Interact();
+        }
     }
 
     private void Dash(InputAction.CallbackContext context)
@@ -193,7 +195,9 @@ public class Player : MonoBehaviour
     {
         if(GPCtrl.Instance.roomStartPointList.Count > 0)
         {
-            transform.position = GPCtrl.Instance.roomStartPointList.Find(x => x.name == PermanentDataHolder.Instance.formerRoom).position;
+            Transform _startPoint = GPCtrl.Instance.roomStartPointList.Find(x => x.name == PermanentDataHolder.Instance.formerRoom);
+            if (_startPoint != null)
+                transform.position = _startPoint.position;
         }
         PermanentDataHolder.Instance.formerRoom = SceneManager.GetActiveScene().name;
         GPCtrl.Instance.UICtrl.healthBar.SetBarValue(currentHealth, maxHealth);
@@ -213,6 +217,7 @@ public class Player : MonoBehaviour
         inputManager.Player.Recall.performed += Recall;
         inputManager.Player.Teleport.performed += Teleport;
         inputManager.Player.Dash.performed += Dash;
+        inputManager.Player.Confirm.performed += Confirm;
     }
 
     private void OnDisable()
@@ -225,8 +230,11 @@ public class Player : MonoBehaviour
         if (blockPlayerMovement)
         {
             moveDirection = Vector3.zero;
+            animator.SetBool("Running", false);
+            animator.speed = 0;
             return;
         }
+        else animator.speed = 1;
         moveDirection = new Vector3(inputManager.Player.MoveDirection.ReadValue<Vector2>().x, 0, inputManager.Player.MoveDirection.ReadValue<Vector2>().y).normalized;
         aimDirection = new Vector3(inputManager.Player.AimDirection.ReadValue<Vector2>().x, 0, inputManager.Player.AimDirection.ReadValue<Vector2>().y).normalized;
         if (currentProjectile == null) aimDirection = moveDirection; //if player not looking anywhere, look where it goes

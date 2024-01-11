@@ -20,10 +20,21 @@ public class GPCtrl : MonoBehaviour
     public GeneralData GeneralData;
     public AudioCtrl AudioCtrl;
     public List<Transform> roomStartPointList = new List<Transform>();
+    public bool pause = false;
     #endregion
 
     #region Methods
-
+    public void Pause(bool _value)
+    {
+        pause = _value;
+        if (pause)
+        {
+            Player.blockPlayerMovement = true;
+        } else
+        {
+            Player.blockPlayerMovement = false;
+        }
+    }
     #endregion
 
     #region Unity API

@@ -129,6 +129,13 @@ public class Enemy : MonoBehaviour
     #region Unity API
     private void Update()
     {
+        if (GPCtrl.Instance.pause)
+        {
+            aiPath.maxSpeed = 0;
+            return;
+        }
+        else aiPath.maxSpeed = data.maxSpeed;
+
         if (target != null && Vector3.Distance(transform.position, target.transform.position) <= 12)
         {
             aiDestinationSetter.target = target.transform;

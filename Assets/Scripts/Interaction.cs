@@ -17,6 +17,5 @@ public class Interaction : MonoBehaviour
     public void Dialog()
     {
         GPCtrl.Instance.UICtrl.dialogBox.ValidateDialog(_dialogList);
-        Debug.Log("INTERACT");
     }
 }

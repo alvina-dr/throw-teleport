@@ -7,6 +7,7 @@ using DG.Tweening;
 public class UI_DialogBox : MonoBehaviour
 {
     public CanvasGroup canvasGroup;
+    public Transform box;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI nameTextUnderline;
     public TextMeshProUGUI dialogText;
@@ -17,20 +18,21 @@ public class UI_DialogBox : MonoBehaviour
 
     public void ShowDialogList(List<DialogEntry> _dialogList)
     {
-        canvasGroup.alpha = 1;
+        GPCtrl.Instance.Pause(true);
+        canvasGroup.DOFade(1.0f, .2f);
         dialogList = _dialogList;
         ShowDialog(dialogList[index]);
     } 
 
     public void ShowDialog(DialogEntry _entry)
     {
-        transform.localScale = Vector3.zero;
+        box.transform.localScale = Vector3.zero;
         nameText.text = _entry.name;
         nameTextUnderline.text = _entry.name;
         dialogText.text = _entry.dialog;
-        transform.DOScale(1.1f, .2f).OnComplete(() =>
+        box.transform.DOScale(1.1f, .2f).OnComplete(() =>
         {
-            transform.DOScale(1f, .2f).OnComplete(() =>
+            box.transform.DOScale(1f, .2f).OnComplete(() =>
             {
                 waitValidation = true;
             });
@@ -55,9 +57,10 @@ public class UI_DialogBox : MonoBehaviour
 
     public void CloseDialogBox()
     {
-        canvasGroup.alpha = 0;
+        canvasGroup.DOFade(0f, .2f);
         index = -1;
         waitValidation = true;
+        GPCtrl.Instance.Pause(false);
     }
 
     [System.Serializable]
