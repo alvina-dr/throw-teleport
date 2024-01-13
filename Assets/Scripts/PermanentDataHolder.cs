@@ -26,12 +26,16 @@ public class PermanentDataHolder : MonoBehaviour
     public List<string> enemyKilledID = new List<string>();
     public List<string> dropPickUpID = new List<string>();
     public string formerRoom;
+
+    [Header("DIALOGS")]
+    public List<UI_DialogBox.DialogEntry> startDialog;
+    public List<UI_DialogBox.DialogEntry> unlockTeleportDialog;
     #endregion
 
     #region Classes
     public class Abilities
     {
-        public bool abilityTeleport = true;
+        public bool abilityTeleport = false;
         public bool abilityDash = true;
         public bool abilityDrag = false;
         public bool abilityAutomaticAttack = false;
@@ -75,6 +79,26 @@ public class PermanentDataHolder : MonoBehaviour
         //check if in save
         if (currentAbilities == null) currentAbilities = new Abilities();
         formerRoom = SceneManager.GetActiveScene().name;
+    }
+
+    private void Start()
+    {
+        DOVirtual.DelayedCall(.5f, () =>
+        {
+            if (formerRoom == "Base")
+            {
+                GPCtrl.Instance.UICtrl.dialogBox.ValidateDialog(startDialog);
+            }
+        });
+    }
+
+    private void Update()
+    {
+        if (formerRoom == "Room_2" && currentAbilities.abilityTeleport == false && FindObjectsOfType<Enemy>().Length == 0)
+        {
+            currentAbilities.abilityTeleport = true;
+            GPCtrl.Instance.UICtrl.dialogBox.ValidateDialog(unlockTeleportDialog);
+        }
     }
     #endregion
 }

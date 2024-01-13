@@ -238,8 +238,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentMaterial: 0
+  hasProjectile: 0
   darkBackground: {fileID: 2543163915513765372}
   musicSource: {fileID: 1359034510147438519}
+  enemyKilledID: []
+  dropPickUpID: []
+  formerRoom: 
+  startDialog:
+  - name: Scientist
+    dialog: 'Hello there ! '
+  - name: Scientist
+    dialog: Are you feeling okay ?
+  - name: Scientist
+    dialog: Mmmh... Yeah, it seems alright. Good !
+  - name: Scientist
+    dialog: Now, onto your first mission. I've upgraded you with a sort of projectile
+      that you can launch using your new arm.
+  - name: Scientist
+    dialog: I need you to go outside and try to pick up some materials. They're easy
+      to find, they look like bright yellow stones.
+  - name: Scientist
+    dialog: I need them to upgrade you again.
+  - name: Scientist
+    dialog: Hopefully, you can clean the tunnels of those nasty robots and free the
+      way for us to reach the surface.
+  - name: Scientist
+    dialog: Good luck !
+  unlockTeleportDialog:
+  - name: Scientist
+    dialog: Ooooh sweet, can you hear me ?
+  - name: Scientist
+    dialog: I've managed to pick up your signal through the tunnel, now we can talk
+      whenever we want ! Cool right ?
+  - name: Scientist
+    dialog: Anyway, I saw what happened, you're a real fighter, wow ! With all the
+      materials you got, I think I can upgrade your projectile.
+  - name: Scientist
+    dialog: Let me think...
+  - name: Scientist
+    dialog: Right, come back to the QG and we'll look into it.
 --- !u!114 &8740786508012801827
 MonoBehaviour:
   m_ObjectHideFlags: 0

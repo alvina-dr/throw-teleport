@@ -1168,6 +1168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Room_1
+  specialEntry: 
   askConfirmation: 1
   askConfirmationEvent:
     m_PersistentCalls:
@@ -5582,7 +5583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4165877686937446626, guid: c55c04aaae88b5a46b5d3e0d221e850c, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4165877686937446626, guid: c55c04aaae88b5a46b5d3e0d221e850c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6971,7 +6972,7 @@ Camera:
     height: 1
   near clip plane: 0.001
   far clip plane: 1000
-  field of view: 23
+  field of view: 28
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -6996,7 +6997,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907038679}
-  m_LocalRotation: {x: 0.39740708, y: 0.000000015789306, z: -0.0000000068379378, w: 0.9176424}
+  m_LocalRotation: {x: 0.39740708, y: -0.000000015789306, z: 0.0000000068379378, w: 0.9176424}
   m_LocalPosition: {x: 0.16, y: 26.94, z: -26.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10208,7 +10209,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 4562721912530348856}
   m_Follow: {fileID: 4562721912530348856}
   m_Lens:
-    FieldOfView: 23
+    FieldOfView: 28
     OrthographicSize: 5
     NearClipPlane: 0.001
     FarClipPlane: 1000
@@ -10232,7 +10233,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313724991}
-  m_LocalRotation: {x: 0.39740708, y: 0.000000015789306, z: -0.0000000068379378, w: 0.9176424}
+  m_LocalRotation: {x: 0.39740708, y: -0.000000015789306, z: 0.0000000068379378, w: 0.9176424}
   m_LocalPosition: {x: 0.16, y: 26.94, z: -26.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -46512,7 +46513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6895460579810458564, guid: 666c805114697ee4ebb30a9aaa4421cd, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6895460579810458564, guid: 666c805114697ee4ebb30a9aaa4421cd, type: 3}
       propertyPath: m_AnchorMax.x

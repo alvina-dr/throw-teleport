@@ -109,7 +109,10 @@ public class Player : MonoBehaviour
 
     private void Confirm(InputAction.CallbackContext context)
     {
-        if (interactionList.Count > 0)
+        if (GPCtrl.Instance.UICtrl.dialogBox.canvasGroup.alpha == 1)
+        {
+            GPCtrl.Instance.UICtrl.dialogBox.ValidateDialog(GPCtrl.Instance.UICtrl.dialogBox.dialogList);
+        } else if (interactionList.Count > 0)
         {
             interactionList[interactionList.Count - 1].Interact();
         }
@@ -122,7 +125,7 @@ public class Player : MonoBehaviour
         if (!canDash) return;
         isDashing = true;
         canDash = false;
-        DOTween.To(() => CinemachineShake.Instance.cinemachineVirtualCamera.m_Lens.FieldOfView, x => CinemachineShake.Instance.cinemachineVirtualCamera.m_Lens.FieldOfView = x, 24, .2f);
+        DOTween.To(() => CinemachineShake.Instance.cinemachineVirtualCamera.m_Lens.FieldOfView, x => CinemachineShake.Instance.cinemachineVirtualCamera.m_Lens.FieldOfView = x, 29, .2f);
         StartCoroutine(StopDashing());
         Instantiate(playerFX.dashParticle, smokeSource).transform.position = smokeSource.transform.position;
         animator.SetTrigger("Dashing");
@@ -133,7 +136,7 @@ public class Player : MonoBehaviour
     private IEnumerator StopDashing()
     {
         yield return new WaitForSeconds(dashTime);
-        DOTween.To(() => CinemachineShake.Instance.cinemachineVirtualCamera.m_Lens.FieldOfView, x => CinemachineShake.Instance.cinemachineVirtualCamera.m_Lens.FieldOfView = x, 23, .2f);
+        DOTween.To(() => CinemachineShake.Instance.cinemachineVirtualCamera.m_Lens.FieldOfView, x => CinemachineShake.Instance.cinemachineVirtualCamera.m_Lens.FieldOfView = x, 28, .2f);
         isDashing = false;
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
