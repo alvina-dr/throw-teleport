@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class LaunchDungeon : MonoBehaviour
 {
     [SerializeField] private string sceneName;
+    [SerializeField] private string specialEntry;
     [SerializeField] private bool askConfirmation = false;
     [SerializeField] private UnityEvent askConfirmationEvent;
     [SerializeField] private UnityEvent hideAskConfirmationEvent;
@@ -28,6 +29,7 @@ public class LaunchDungeon : MonoBehaviour
 
     public void ChangeScene()
     {
+        if (specialEntry != "") PermanentDataHolder.Instance.formerRoom = specialEntry;
         PermanentDataHolder.Instance.FadeIn(() =>
         {
             SceneManager.LoadScene(sceneName);

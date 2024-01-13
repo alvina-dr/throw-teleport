@@ -188,6 +188,7 @@ public class Player : MonoBehaviour
     #region UnityAPI
     private void Awake()
     {
+        blockPlayerMovement = true;
         inputManager = new InputManager();
     }
 
@@ -197,7 +198,10 @@ public class Player : MonoBehaviour
         {
             Transform _startPoint = GPCtrl.Instance.roomStartPointList.Find(x => x.name == PermanentDataHolder.Instance.formerRoom);
             if (_startPoint != null)
+            {
                 transform.position = _startPoint.position;
+                Debug.Log("teleport good place");
+            }
         }
         PermanentDataHolder.Instance.formerRoom = SceneManager.GetActiveScene().name;
         GPCtrl.Instance.UICtrl.healthBar.SetBarValue(currentHealth, maxHealth);
@@ -207,6 +211,7 @@ public class Player : MonoBehaviour
             Destroy(currentProjectile);
             currentProjectile = null;
         }
+        blockPlayerMovement = false;
     }
 
     private void OnEnable()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class GPCtrl : MonoBehaviour
 {
@@ -48,6 +49,7 @@ public class GPCtrl : MonoBehaviour
         for (int i = 0; i < enemyArray.Length; i++)
         {
             if (PermanentDataHolder.Instance.enemyKilledID.FindAll(x => x == enemyArray[i].id).Count > 0) {
+                enemyArray[i].DOKill();
                 Destroy(enemyArray[i].gameObject);
             } 
         }
@@ -57,6 +59,7 @@ public class GPCtrl : MonoBehaviour
         {
             if (PermanentDataHolder.Instance.dropPickUpID.FindAll(x => x == dropArray[i].id).Count > 0)
             {
+                dropArray[i].DOKill();
                 Destroy(dropArray[i].gameObject);
             }
         }

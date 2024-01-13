@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Room_Teleport_1.unity
     guid: 8093fe77bb7b36b4b99faf21eeed6d5a
+  - enabled: 1
+    path: Assets/Scenes/Room_2.unity
+    guid: 2cb9ee6d308e1144f9740f4661b418cb
   m_configObjects: {}

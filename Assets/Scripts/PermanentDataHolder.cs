@@ -31,7 +31,7 @@ public class PermanentDataHolder : MonoBehaviour
     #region Classes
     public class Abilities
     {
-        public bool abilityTeleport = false;
+        public bool abilityTeleport = true;
         public bool abilityDash = true;
         public bool abilityDrag = false;
         public bool abilityAutomaticAttack = false;

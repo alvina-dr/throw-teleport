@@ -136,12 +136,9 @@ public class Enemy : MonoBehaviour
         }
         else aiPath.maxSpeed = data.maxSpeed;
 
-        if (target != null && Vector3.Distance(transform.position, target.transform.position) <= 12)
+        if (target != null && Vector3.Distance(transform.position, target.transform.position) > 12)
         {
-            aiDestinationSetter.target = target.transform;
-        } else
-        {
-            aiDestinationSetter.target = null;
+            aiPath.maxSpeed = 0;
         }
         if (target != null && Vector3.Distance(transform.position, target.transform.position) <= data.attackRange)
         {
