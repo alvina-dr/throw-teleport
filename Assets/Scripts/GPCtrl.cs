@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class GPCtrl : MonoBehaviour
 {
@@ -22,6 +23,11 @@ public class GPCtrl : MonoBehaviour
     public AudioCtrl AudioCtrl;
     public List<Transform> roomStartPointList = new List<Transform>();
     public bool pause = false;
+
+    [Header("LOCKED DOOR")]
+    public GameObject teleporter;
+    public GameObject doorLocked;
+
     #endregion
 
     #region Methods
@@ -62,6 +68,17 @@ public class GPCtrl : MonoBehaviour
                 dropArray[i].DOKill();
                 Destroy(dropArray[i].gameObject);
             }
+        }
+        if (SceneManager.GetActiveScene().name == "Room_Teleport_1" && PermanentDataHolder.Instance.Room2Locked == false)
+        {
+            teleporter.SetActive(true);
+            doorLocked.SetActive(false);
+        }
+
+        if (SceneManager.GetActiveScene().name == "2_Room_1" && PermanentDataHolder.Instance.Room2Locked == false)
+        {
+            teleporter.SetActive(true);
+            doorLocked.SetActive(false);
         }
     }
     #endregion

@@ -22,10 +22,15 @@ public class PermanentDataHolder : MonoBehaviour
     [Header("MUSIC")]
     [SerializeField] private AudioSource musicSource;
 
+    [Header("STATS")]
+    [SerializeField] public float maxHealth;
+    [SerializeField] public float currentHealth;
+
     [Header("REMEMBER")]
     public List<string> enemyKilledID = new List<string>();
     public List<string> dropPickUpID = new List<string>();
     public string formerRoom;
+    public bool Room2Locked = true;
 
     [Header("DIALOGS")]
     public List<UI_DialogBox.DialogEntry> startDialog;
@@ -60,6 +65,11 @@ public class PermanentDataHolder : MonoBehaviour
     {
         darkBackground.DOFade(0, .3f);
     }
+
+    public void OpenDoor()
+    {
+        Room2Locked = false;
+    }
     #endregion
 
     #region Singleton
@@ -70,7 +80,7 @@ public class PermanentDataHolder : MonoBehaviour
     private void Awake()
     {
         if (Instance != null && Instance != this)
-            Destroy(this);
+            Destroy(this.gameObject);
         else
         {
             Instance = this;
@@ -88,6 +98,7 @@ public class PermanentDataHolder : MonoBehaviour
             if (formerRoom == "Base")
             {
                 GPCtrl.Instance.UICtrl.dialogBox.ValidateDialog(startDialog);
+                musicSource.Play();
             }
         });
     }

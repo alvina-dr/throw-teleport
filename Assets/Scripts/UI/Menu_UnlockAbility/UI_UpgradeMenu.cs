@@ -99,7 +99,7 @@ public class UI_UpgradeMenu : MonoBehaviour
     #endregion
 
     #region Unity API
-    private void Awake()
+    private void Start()
     {
         UpgradeData[] upgradeArray = Resources.LoadAll<UpgradeData>("Upgrade");
         for (int i = 0; i < upgradeArray.Length; i++)

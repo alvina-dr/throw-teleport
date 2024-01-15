@@ -10,7 +10,7 @@ public class UI_Counter : MonoBehaviour
 
     private void Start()
     {
-        SetText(PermanentDataHolder.Instance.currentMaterial.ToString());
+        //SetText(PermanentDataHolder.Instance.currentMaterial.ToString());
     }
 
     public void SetText(string value)

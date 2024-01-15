@@ -15,6 +15,7 @@ public class UI_DialogBox : MonoBehaviour
     [HideInInspector]
     public List<DialogEntry> dialogList = new List<DialogEntry>();
     private int index = -1;
+    [SerializeField] private AudioSource audioSource;
 
     public void ShowDialogList(List<DialogEntry> _dialogList)
     {
@@ -42,6 +43,7 @@ public class UI_DialogBox : MonoBehaviour
     public void ValidateDialog(List<DialogEntry> _dialogList)
     {
         if (!waitValidation) return;
+        audioSource.Play();
         waitValidation = false;
         index++;
         if (index == 0) ShowDialogList(_dialogList); 

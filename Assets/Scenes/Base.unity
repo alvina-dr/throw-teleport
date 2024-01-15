@@ -6162,6 +6162,8 @@ MonoBehaviour:
   roomStartPointList:
   - {fileID: 1242869624}
   pause: 0
+  teleporter: {fileID: 0}
+  doorLocked: {fileID: 0}
 --- !u!1001 &825875950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6997,7 +6999,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907038679}
-  m_LocalRotation: {x: 0.39740708, y: -0.000000015789306, z: 0.0000000068379378, w: 0.9176424}
+  m_LocalRotation: {x: 0.39740708, y: 0.000000015789306, z: -0.0000000068379378, w: 0.9176424}
   m_LocalPosition: {x: 0.16, y: 26.94, z: -26.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10233,7 +10235,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313724991}
-  m_LocalRotation: {x: 0.39740708, y: -0.000000015789306, z: 0.0000000068379378, w: 0.9176424}
+  m_LocalRotation: {x: 0.39740708, y: 0.000000015789306, z: -0.0000000068379378, w: 0.9176424}
   m_LocalPosition: {x: 0.16, y: 26.94, z: -26.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -44662,6 +44664,47 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: _dialogList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: _dialogList.Array.data[0].name
+      value: Scientist
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: _dialogList.Array.data[1].name
+      value: Scientist
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: _dialogList.Array.data[2].name
+      value: Scientist
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: _dialogList.Array.data[0].dialog
+      value: Theeeere we go...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: _dialogList.Array.data[1].dialog
+      value: "Voil\xE0 ! You can now teleport to your projectile."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: _dialogList.Array.data[2].dialog
+      value: This should give you access to many new places and might evenn help
+        you during fights.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1841931972}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Dialog
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Interaction, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4521104075918835354, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -44712,6 +44755,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+--- !u!114 &1841931972 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+  m_PrefabInstance: {fileID: 1841931971}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29324870c877c64496e730c49986058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1860142464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48827,6 +48881,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1359034510147438519, guid: 198103fd9c0112b49b8d8ff41a4f1bf3, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4080162032100890329, guid: 198103fd9c0112b49b8d8ff41a4f1bf3, type: 3}
       propertyPath: m_RootOrder
       value: 0

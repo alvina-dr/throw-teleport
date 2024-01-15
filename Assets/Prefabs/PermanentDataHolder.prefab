@@ -241,9 +241,12 @@ MonoBehaviour:
   hasProjectile: 0
   darkBackground: {fileID: 2543163915513765372}
   musicSource: {fileID: 1359034510147438519}
+  maxHealth: 100
+  currentHealth: 100
   enemyKilledID: []
   dropPickUpID: []
   formerRoom: 
+  Room2Locked: 1
   startDialog:
   - name: Scientist
     dialog: 'Hello there ! '
@@ -300,8 +303,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6b449c51a684f964183dd0d38fc6b78a, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_PlayOnAwake: 0
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0

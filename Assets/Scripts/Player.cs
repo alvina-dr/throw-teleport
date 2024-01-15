@@ -26,10 +26,6 @@ public class Player : MonoBehaviour
     private bool isDashing = false;
     private bool canDash = true;
 
-    [Header("STATS")]
-    [SerializeField] private float maxHealth;
-    [SerializeField] private float currentHealth;
-
     [Header("PROJECTILE SYSTEM")]
     public Vector3 aimDirection;
     [SerializeField] List<Projectile> fixedProjectileList = new List<Projectile>();
@@ -154,13 +150,13 @@ public class Player : MonoBehaviour
 
     public void Damage(float _damage)
     {
-        if (currentHealth <= 0) return;
+        if (PermanentDataHolder.Instance.currentHealth <= 0) return;
             Instantiate(playerFX.damageParticle, transform).transform.position = transform.position;
         CinemachineShake.Instance.ShakeCamera(3, .1f);
-        currentHealth -= _damage;
-        GPCtrl.Instance.UICtrl.healthBar.SetBarValue(currentHealth, maxHealth);
-        GPCtrl.Instance.UICtrl.healthCount.SetText(currentHealth.ToString() + "/" + maxHealth.ToString());
-        if (currentHealth <= 0)
+        PermanentDataHolder.Instance.currentHealth -= _damage;
+        GPCtrl.Instance.UICtrl.healthBar.SetBarValue(PermanentDataHolder.Instance.currentHealth, PermanentDataHolder.Instance.maxHealth);
+        GPCtrl.Instance.UICtrl.healthCount.SetText(PermanentDataHolder.Instance.currentHealth.ToString() + "/" + PermanentDataHolder.Instance.maxHealth.ToString());
+        if (PermanentDataHolder.Instance.currentHealth <= 0)
             Death();
         else
             blinkColor.Blink();
@@ -197,7 +193,10 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        if(GPCtrl.Instance.roomStartPointList.Count > 0)
+        GPCtrl.Instance.UICtrl.healthBar.SetBarValue(PermanentDataHolder.Instance.currentHealth, PermanentDataHolder.Instance.maxHealth);
+        GPCtrl.Instance.UICtrl.healthCount.SetText(PermanentDataHolder.Instance.currentHealth.ToString() + "/" + PermanentDataHolder.Instance.maxHealth.ToString());
+        GPCtrl.Instance.UICtrl.materialCount.SetText(PermanentDataHolder.Instance.currentMaterial.ToString());
+        if (GPCtrl.Instance.roomStartPointList.Count > 0)
         {
             Transform _startPoint = GPCtrl.Instance.roomStartPointList.Find(x => x.name == PermanentDataHolder.Instance.formerRoom);
             if (_startPoint != null)
@@ -207,8 +206,6 @@ public class Player : MonoBehaviour
             }
         }
         PermanentDataHolder.Instance.formerRoom = SceneManager.GetActiveScene().name;
-        GPCtrl.Instance.UICtrl.healthBar.SetBarValue(currentHealth, maxHealth);
-        GPCtrl.Instance.UICtrl.healthCount.SetText(currentHealth.ToString() + "/" + maxHealth.ToString());
         if (!PermanentDataHolder.Instance.hasProjectile)
         {
             Destroy(currentProjectile);
