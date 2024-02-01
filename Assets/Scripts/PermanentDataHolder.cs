@@ -31,6 +31,8 @@ public class PermanentDataHolder : MonoBehaviour
     public List<string> dropPickUpID = new List<string>();
     public string formerRoom;
     public bool Room2Locked = true;
+    public bool willUnlockTeleport = false;
+    public bool launchGame = false;
 
     [Header("DIALOGS")]
     public List<UI_DialogBox.DialogEntry> startDialog;
@@ -70,6 +72,11 @@ public class PermanentDataHolder : MonoBehaviour
     {
         Room2Locked = false;
     }
+
+    public void UnlockTeleport()
+    {
+        currentAbilities.abilityTeleport = true;
+    }
     #endregion
 
     #region Singleton
@@ -93,22 +100,30 @@ public class PermanentDataHolder : MonoBehaviour
 
     private void Start()
     {
+
+    }
+
+    public void OnSceneLaunch()
+    {
+        Debug.Log("START");
         DOVirtual.DelayedCall(.5f, () =>
         {
-            if (formerRoom == "Base")
+            if (SceneManager.GetActiveScene().name == "Base" && !launchGame)
             {
+                Debug.Log("LAUNCH MUSIC");
                 GPCtrl.Instance.UICtrl.dialogBox.ValidateDialog(startDialog);
                 musicSource.Play();
+                launchGame = true;
             }
         });
     }
 
     private void Update()
     {
-        if (formerRoom == "Room_2" && currentAbilities.abilityTeleport == false && FindObjectsOfType<Enemy>().Length == 0)
+        if (formerRoom == "Room_2" && FindObjectsOfType<Enemy>().Length == 0 && willUnlockTeleport == false)
         {
-            currentAbilities.abilityTeleport = true;
             GPCtrl.Instance.UICtrl.dialogBox.ValidateDialog(unlockTeleportDialog);
+            willUnlockTeleport = true;
         }
     }
     #endregion

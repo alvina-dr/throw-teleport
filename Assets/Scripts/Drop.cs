@@ -45,7 +45,7 @@ public class Drop : MonoBehaviour
         {
             OnGet?.Invoke();
             transform.DOKill();
-            PermanentDataHolder.Instance.dropPickUpID.Add(id);
+            if (id != "") PermanentDataHolder.Instance.dropPickUpID.Add(id);
             Destroy(gameObject);
         }
     }

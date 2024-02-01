@@ -28,6 +28,10 @@ public class GPCtrl : MonoBehaviour
     public GameObject teleporter;
     public GameObject doorLocked;
 
+    [Header("SCIENTIST")]
+    public GameObject scientist1;
+    public GameObject scientist2;
+
     #endregion
 
     #region Methods
@@ -41,6 +45,16 @@ public class GPCtrl : MonoBehaviour
         {
             Player.blockPlayerMovement = false;
         }
+    }
+
+    public void UnlockTeleport()
+    {
+        PermanentDataHolder.Instance.UnlockTeleport();
+    }
+
+    public void OpenDoor()
+    {
+        PermanentDataHolder.Instance.OpenDoor();
     }
     #endregion
 
@@ -80,6 +94,16 @@ public class GPCtrl : MonoBehaviour
             teleporter.SetActive(true);
             doorLocked.SetActive(false);
         }
+        if (SceneManager.GetActiveScene().name == "Base" && PermanentDataHolder.Instance.willUnlockTeleport)
+        {
+            scientist2.SetActive(true);
+            scientist1.SetActive(false);
+        }
+    }
+
+    private void Start()
+    {
+        PermanentDataHolder.Instance.OnSceneLaunch();
     }
     #endregion
 }

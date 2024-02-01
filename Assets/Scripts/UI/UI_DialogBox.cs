@@ -31,6 +31,7 @@ public class UI_DialogBox : MonoBehaviour
         nameText.text = _entry.name;
         nameTextUnderline.text = _entry.name;
         dialogText.text = _entry.dialog;
+        audioSource.Play();
         box.transform.DOScale(1.1f, .2f).OnComplete(() =>
         {
             box.transform.DOScale(1f, .2f).OnComplete(() =>
@@ -43,7 +44,6 @@ public class UI_DialogBox : MonoBehaviour
     public void ValidateDialog(List<DialogEntry> _dialogList)
     {
         if (!waitValidation) return;
-        audioSource.Play();
         waitValidation = false;
         index++;
         if (index == 0) ShowDialogList(_dialogList); 

@@ -10,14 +10,19 @@ namespace Coffee.UIExtensions.Demo
     {
         [SerializeField] private Transform scale;
         [SerializeField] private UIParticle uiParticle;
+        [SerializeField] private float biggerScale;
+        [SerializeField] private float normalScale;
+        [SerializeField] private GameObject showSelect;
 
         public void OnSelect(BaseEventData eventData)
         {
-            if (scale != null) scale.DOScale(1.05f, .2f);
+            if (scale != null) scale.DOScale(biggerScale == 0 ? 1.05f : biggerScale, .2f);
+            if (showSelect != null) showSelect.SetActive(true);
         }
         public void OnDeselect(BaseEventData eventData)
         {
-            if (scale != null) scale.DOScale(1, .2f);
+            if (scale != null) scale.DOScale(normalScale == 0 ? 1 : normalScale, .2f);
+            if (showSelect != null) showSelect.SetActive(false);
         }
 
         public void OnPointerExit(PointerEventData eventData)

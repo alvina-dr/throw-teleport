@@ -2270,6 +2270,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6173203665845011862, guid: ddd4a70b7fe57234caeebbd7d7a57b8b, type: 3}
   m_PrefabInstance: {fileID: 232601499}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &242171533 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4521104075918835355, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+  m_PrefabInstance: {fileID: 1841931971}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &247337854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5573,6 +5578,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DungeonOverlay
       objectReference: {fileID: 0}
+    - target: {fileID: 3381687094271064281, guid: c55c04aaae88b5a46b5d3e0d221e850c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4165877686937446626, guid: c55c04aaae88b5a46b5d3e0d221e850c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6164,6 +6173,8 @@ MonoBehaviour:
   pause: 0
   teleporter: {fileID: 0}
   doorLocked: {fileID: 0}
+  scientist1: {fileID: 242171533}
+  scientist2: {fileID: 1276729950}
 --- !u!1001 &825875950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6999,7 +7010,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907038679}
-  m_LocalRotation: {x: 0.39740708, y: 0.000000015789306, z: -0.0000000068379378, w: 0.9176424}
+  m_LocalRotation: {x: 0.39740708, y: -0.000000015789306, z: 0.0000000068379378, w: 0.9176424}
   m_LocalPosition: {x: 0.16, y: 26.94, z: -26.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10092,6 +10103,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1204738425652503250, guid: 980e66423fb8a144ab8fde4c4acffa67, type: 3}
   m_PrefabInstance: {fileID: 1272886992}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1276729950 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4521104075918835355, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+  m_PrefabInstance: {fileID: 1897347369}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1285148839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10235,7 +10251,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313724991}
-  m_LocalRotation: {x: 0.39740708, y: 0.000000015789306, z: -0.0000000068379378, w: 0.9176424}
+  m_LocalRotation: {x: 0.39740708, y: -0.000000015789306, z: 0.0000000068379378, w: 0.9176424}
   m_LocalPosition: {x: 0.16, y: 26.94, z: -26.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -43974,7 +43990,7 @@ Transform:
   - {fileID: 779635224}
   - {fileID: 522273055}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!1001 &1779990020
 PrefabInstance:
@@ -44664,9 +44680,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4521104075918835352, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
       propertyPath: _dialogList.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
       propertyPath: _dialogList.Array.data[0].name
@@ -44682,11 +44702,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
       propertyPath: _dialogList.Array.data[0].dialog
-      value: Theeeere we go...
+      value: Good luck.
       objectReference: {fileID: 0}
     - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
       propertyPath: _dialogList.Array.data[1].dialog
-      value: "Voil\xE0 ! You can now teleport to your projectile."
+      value: This should give you access to many new places and might evenn help
+        you during fights.
       objectReference: {fileID: 0}
     - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
       propertyPath: _dialogList.Array.data[2].dialog
@@ -44707,7 +44728,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4521104075918835354, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4521104075918835354, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
       propertyPath: m_LocalPosition.x
@@ -44751,7 +44772,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4521104075918835355, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
       propertyPath: m_Name
-      value: PNJ (1)
+      value: Scientist_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
@@ -44760,7 +44781,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
   m_PrefabInstance: {fileID: 1841931971}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 242171533}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a29324870c877c64496e730c49986058, type: 3}
@@ -45024,6 +45045,155 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6829574843203323838, guid: 91a925b6b7b338642abe71223976797b, type: 3}
   m_PrefabInstance: {fileID: 1874220366}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1897347369
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3638725866176966298, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835352, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: _dialogList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: _dialogList.Array.data[0].name
+      value: Scientist
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: _dialogList.Array.data[1].name
+      value: Scientist
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: _dialogList.Array.data[2].name
+      value: Scientist
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: _dialogList.Array.data[0].dialog
+      value: Theeeere we go...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: _dialogList.Array.data[1].dialog
+      value: "Voil\xE0 ! You can now teleport to your projectile."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: _dialogList.Array.data[2].dialog
+      value: This should give you access to many new places and might evenn help
+        you during fights.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1897347370}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 815055378}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Dialog
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: UnlockTeleport
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Interaction, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GPCtrl, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835354, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835354, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835354, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.507
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835354, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835354, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.11580401
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835354, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835354, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9932721
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835354, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835354, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835354, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 166.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835354, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835355, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: m_Name
+      value: Scientist_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835355, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+--- !u!114 &1897347370 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4521104075918835353, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+  m_PrefabInstance: {fileID: 1897347369}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276729950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29324870c877c64496e730c49986058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1900855293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48997,6 +49167,10 @@ PrefabInstance:
     - target: {fileID: 4521104075918835355, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
       propertyPath: m_Name
       value: PNJ
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521104075918835355, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60a0425dcfebd134488276ab2f92b931, type: 3}

@@ -117,6 +117,7 @@ public class Player : MonoBehaviour
     private void Dash(InputAction.CallbackContext context)
     {
         if (blockPlayerMovement) return;
+        if (interactionList.Count > 0) return;
         if (!PermanentDataHolder.Instance.currentAbilities.abilityDash) return;
         if (!canDash) return;
         isDashing = true;
