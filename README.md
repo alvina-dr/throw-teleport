@@ -7,3 +7,5 @@ This was a solo project made during my 2023 summer vacation.
 It's playable on itch : https://alvina-dr.itch.io/throw-teleport
 
 Or you can find more details about my process on my portfolio : https://alvina-dr.com/html/projects/video-games/throw-teleport.html
+
+![image](https://github.com/user-attachments/assets/bb02dcd9-065e-447d-a509-fd6115d8dc05)
